@@ -4,6 +4,13 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>BattleOfCardsAcesHigh</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="BattleOfCardsAcesHigh.Tests\**" />
+    <EmbeddedResource Remove="BattleOfCardsAcesHigh.Tests\**" />
+    <None Remove="BattleOfCardsAcesHigh.Tests\**" />
+  </ItemGroup>
 
 </Project>
