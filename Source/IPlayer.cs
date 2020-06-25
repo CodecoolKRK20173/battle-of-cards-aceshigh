@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BattleOfCardsAcesHigh.Source
+namespace BattleOfCardsAcesHigh
 {
-    interface IPlayer
+    interface IPlayer : IEquatable<Player>
     {
+        Card PlayCard();
+        string CallAttributeToFight(string);
+        void AddCardsToHand(Deck deckForPLayer);
+        string GetName();
+        bool IsLoser();
+
     }
 }
