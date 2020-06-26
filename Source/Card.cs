@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace BattleOfCardsAcesHigh
 
@@ -22,11 +21,25 @@ namespace BattleOfCardsAcesHigh
             this._description = description;
             this._playedBy = playedBy;
             this._cardName = cardName;
+            this._statToCompare = 0;
         }
 
         public void SetStatToCompare(string chosenStat)
         {
-            this._statToCompare = chosenStat;
+            if (chosenStat == "intelligence")
+            { 
+                this._statToCompare = _intelligence; 
+            }
+
+            else if (chosenStat == "power")
+            {
+                this._statToCompare = _power;
+            }
+            
+            else if (chosenStat == "speed")
+            {
+                this._statToCompare = _speed;
+            }
         }
 
         public int CompareTo(Card card)
@@ -49,17 +62,17 @@ namespace BattleOfCardsAcesHigh
 
         public override string ToString()
         {
-            int cardHeight = 11;
+     
             int cardWidth = 19;
             string cardTopBottom = "+--------------------+\n";
             string cardRow = "|                    |\n";
             string cardName = "| " + _cardName.PadRight(cardWidth - _cardName.Length) + "|" + "\n";
             string cardDescription = "| " + _description.PadRight(cardWidth - _description.Length) + "|" + "\n";
-            string cardPower = "| Power: " + _description.PadRight(cardWidth - (_power.Length + 7)) + "|" + "\n";
-            string cardSpeed = "| Speed: " + _description.PadRight(cardWidth - (_speed.Length + 7)) + "|" + "\n";
-            string cardInt = "| Intelligence: " + _description.PadRight(cardWidth - (_intelligence.Length + 14)) + "|" + "\n";
-
-            string printCard = cardTopBottom + cardRow + cardName + cardDescription + (4 * cardRow) + cardPower + cardSpeed + cardInt + cardRow + cardTopBottom;
+            string cardPower = "| Power: " + _description.PadRight(cardWidth - (_power.ToString().Length + 7)) + "|" + "\n";
+            string cardSpeed = "| Speed: " + _description.PadRight(cardWidth - (_speed.ToString().Length + 7)) + "|" + "\n";
+            string cardInt = "| Intelligence: " + _description.PadRight(cardWidth - (_intelligence.ToString().Length + 14)) + "|" + "\n";
+            string printCard = cardTopBottom + cardRow + cardName + cardDescription + cardRow + cardRow + cardRow + cardRow + cardPower + cardSpeed + cardInt + cardRow + cardTopBottom;
+            
             return printCard;
 
         }
