@@ -22,12 +22,11 @@ namespace BattleOfCardsAcesHigh
             this._description = description;
             this._playedBy = playedBy;
             this._cardName = cardName;
-                 
         }
 
         public void SetStatToCompare(string chosenStat)
         {
-            this._statToCompare = this.chosenStat;
+            this._statToCompare = chosenStat;
         }
 
         public int CompareTo(Card card)
