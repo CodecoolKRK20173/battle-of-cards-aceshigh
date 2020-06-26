@@ -7,7 +7,7 @@ using System.Text;
 namespace BattleOfCardsAcesHigh.Source
 {
  
-    class Table : IComparer<Card>
+    class Table
     {
         private List<Card> _playedCards;
         private List<Player> _allPlayers;
@@ -16,11 +16,8 @@ namespace BattleOfCardsAcesHigh.Source
         {
             Dealer janusz = new Dealer(_allPlayers.Count);
             janusz.DealCards(_allPlayers);
+            _playedCards.Sort(janusz);
              
-        }
-        public int Compare([AllowNull] Card x, [AllowNull] Card y)
-        {
-            return x.CompareTo(y);
         }
     }
 }

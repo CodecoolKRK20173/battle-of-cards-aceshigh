@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace BattleOfCardsAcesHigh.Source
 {
-    class Dealer
+    class Dealer : IComparer<Card>
     {
         private Deck _mainDeck;
         private Deck _playerHand;
@@ -32,5 +33,9 @@ namespace BattleOfCardsAcesHigh.Source
 
         }
 
+        public int Compare([AllowNull] Card x, [AllowNull] Card y)
+        {
+            return x.CompareTo(y);
+        }
     }
 }
