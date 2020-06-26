@@ -30,14 +30,14 @@ namespace BattleOfCardsAcesHigh
             this._statToCompare = this.chosenStat;
         }
 
-        public int CompareTo(Card card1, Card card2)
+        public int CompareTo(Card card)
         {
 
-            if (card1._statToCompare > card2._statToCompare)
+            if (this._statToCompare > card._statToCompare)
             {
                 return 1;
             }
-            else if (card1._statToCompare < card2._statToCompare)
+            else if (this._statToCompare < card._statToCompare)
             {
                 return -1;
             }
