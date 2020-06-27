@@ -8,6 +8,6 @@ namespace BattleOfCardsAcesHigh
         private List<Card> _deckOfCards;
 
         public abstract Card DrawTopCard();
-        
+
     }
 }

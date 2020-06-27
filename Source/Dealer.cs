@@ -22,7 +22,7 @@ namespace BattleOfCardsAcesHigh.Source
             return DeckDao.CreateMainDeck();
         }
 
-        public void DealCards(List<Player> players)
+        public void DealCards(IEnumerable<Player> players)
         {
             foreach (Player player in players)
             {
