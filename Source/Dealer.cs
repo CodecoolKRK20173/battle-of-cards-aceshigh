@@ -9,6 +9,7 @@ namespace BattleOfCardsAcesHigh.Source
     {
         private Deck _mainDeck;
         private Deck _playerHand;
+        private IDao _dao = new CsvDao();
 
         public Dealer(int numberOfPlayers)
         {
@@ -19,7 +20,7 @@ namespace BattleOfCardsAcesHigh.Source
 
         private Deck CreateMainDeck()
         {
-            return new CsvDao().CreateMainDeck();
+            return _dao.CreateMainDeck();
         }
 
         public void DealCards(IEnumerable<Player> players)
