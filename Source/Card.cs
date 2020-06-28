@@ -13,13 +13,13 @@ namespace BattleOfCardsAcesHigh
         private string _description;
         private string _playedBy;
 
-        public Card(int power, int speed, int intelligence, string cardName, string description, string playedBy)
+        public Card(int power, int speed, int intelligence, string cardName, string description)
         {
             this._power = power;
             this._speed = speed;
             this._intelligence = intelligence;
             this._description = description;
-            this._playedBy = playedBy;
+            this._playedBy = null;
             this._cardName = cardName;
             this._statToCompare = 0;
         }

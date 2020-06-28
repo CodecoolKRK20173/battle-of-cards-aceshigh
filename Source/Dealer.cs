@@ -19,7 +19,7 @@ namespace BattleOfCardsAcesHigh.Source
 
         private Deck CreateMainDeck()
         {
-            return DeckDao.CreateMainDeck();
+            return new CsvDao().CreateMainDeck();
         }
 
         public void DealCards(IEnumerable<Player> players)
