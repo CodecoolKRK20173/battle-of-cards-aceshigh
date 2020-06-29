@@ -16,7 +16,7 @@ namespace BattleOfCardsAcesHigh.Source
         private int _intelligence;
         private string _description;
 
-        public Deck CreateMainDeck()
+        public MainDeck CreateMainDeck()
         {
             _fileContent = File.ReadLines(_fileName);
             var cardList = new List<Card>();

@@ -1,34 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text;
 
 namespace BattleOfCardsAcesHigh.Source
 {
     class Dealer : IComparer<Card>
     {
-        private Deck _mainDeck;
-        private Deck _playerHand;
+        private IEnumerable<Player> _allPlayers;
+        private MainDeck _mainDeck;
+        private PlayerHand _playerHand;
         private IDao _dao = new CsvDao();
 
-        public Dealer(int numberOfPlayers)
+        public Dealer(IEnumerable<Player> players)
         {
             this._mainDeck = CreateMainDeck();
             this._mainDeck.Shuffle();
-            this._mainDeck.SplitCards(numberOfPlayers);
+            this._allPlayers = players;
+
         }
 
-        private Deck CreateMainDeck()
+        private MainDeck CreateMainDeck()
         {
             return _dao.CreateMainDeck();
         }
 
-        public void DealCards(IEnumerable<Player> players)
+        public void DealCards()
         {
-            foreach (Player player in players)
+            
+            var splittedDeck = _mainDeck.SplitCards(_allPlayers.Count());
+            _mainDeck = null;
+
+            foreach (Player player in _allPlayers)
             {
-                _playerHand = _mainDeck[0];
-                _mainDeck.RemoveAt(0);
+                _playerHand = new PlayerHand(splittedDeck[0]);
+                splittedDeck.RemoveAt(0);
                 player.AddCardsToHand(_playerHand);
             }
 
