@@ -6,7 +6,7 @@ namespace BattleOfCardsAcesHigh
     public class MainDeck : Deck
 
     {
-        MainDeck(List<Card> deck) : base(deck) { }
+        public MainDeck(List<Card> deck) : base(deck) { }
 
     
     public void Shuffle()

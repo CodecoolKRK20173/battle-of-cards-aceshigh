@@ -6,7 +6,7 @@ namespace BattleOfCardsAcesHigh
     public class PlayerHand : Deck
 
     {
-        PlayerHand(List<Card> deck) : base(deck) { }
+        public PlayerHand(List<Card> deck) : base(deck) { }
 
         public void AddCards(List<Card> wonCards)
         {
