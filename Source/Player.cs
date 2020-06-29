@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BattleOfCardsAcesHigh
 {
-    abstract class Player : IPlayer
+    public abstract class Player : IPlayer
     {
         private string playerName;
         private Deck playerHand;

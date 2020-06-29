@@ -11,7 +11,7 @@ namespace BattleOfCardsAcesHigh
         private int _statToCompare;
         private string _cardName;
         private string _description;
-        private string _playedBy;
+        private Player _playedBy;
 
         public Card(int power, int speed, int intelligence, string cardName, string description)
         {
@@ -24,7 +24,7 @@ namespace BattleOfCardsAcesHigh
             this._statToCompare = 0;
         }
 
-        public string GetPlayedBy()
+        public Player GetPlayedBy()
         {
             return _playedBy;
         }
