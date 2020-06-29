@@ -4,26 +4,44 @@ using System.Collections.Generic;
 namespace BattleOfCardsAcesHigh
 {
     public class MainDeck : Deck
+
     {
+        MainDeck(List<Card> deck) : base(deck) { }
 
-        public MainDeck(List<Card> listOfCards)
+    
+    public void Shuffle()
         {
-            this._deckOfCards = listOfCards;
+            Random randomDeck = new Random();
+            int numberOfCards = _deckOfCards.Count;
+
+            for (int i = numberOfCards - 1; i > 1; i--)
+            {
+                int randomNext = randomDeck.Next(i + 1);
+
+                Card Value = _deckOfCards[randomNext];
+                _deckOfCards[randomNext] = _deckOfCards[i];
+                _deckOfCards[i] = Value;
+            }
         }
 
-        public Card DrawTopCard()
+        public List<List<Card>> SplitCards(int numberOfPlayers)
         {
-            return Card;
-        }
+            int index = 0;
+            List<List<Card>> listOfLists = new List<List<Card>>();
+            
 
-        public List<Card> Shuffle()
-        {
-            return List<Card>;
-        }
+            foreach (Card card in _deckOfCards)
+            {
+                listOfLists[index].Add(card);
+                index++;
 
-        public List<Card> SplitDeck (int numberOfPlayers)
-        {
-            return List<Card>;
+                if (index > numberOfPlayers)
+                {
+                    index = 0;
+                }
+            }
+            return listOfLists;
+           
         }
     }
 }

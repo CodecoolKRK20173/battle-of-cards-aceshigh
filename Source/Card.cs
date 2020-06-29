@@ -47,11 +47,11 @@ namespace BattleOfCardsAcesHigh
 
             if (this._statToCompare > card._statToCompare)
             {
-                return 1;
+                return -1;
             }
             else if (this._statToCompare < card._statToCompare)
             {
-                return -1;
+                return 1;
             }
             else
             {

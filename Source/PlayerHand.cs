@@ -6,20 +6,15 @@ namespace BattleOfCardsAcesHigh
     public class PlayerHand : Deck
 
     {
-        public PlayerHand(List<Card> listOfCards)
-        {
-            this._deckOfCards = listOfCards;
-        }
+        PlayerHand(List<Card> deck) : base(deck) { }
 
-        public Card DrawTopCard()
+        public void AddCards(List<Card> wonCards)
         {
-            return Card;
-        }
+            foreach (Card card in wonCards)
+            {
+                _deckOfCards.Add(card);
+            }
 
-        public List<Card> AddCards(Card wonCards)
-        {
-            return List<Card>;
         }
-
     }
 }

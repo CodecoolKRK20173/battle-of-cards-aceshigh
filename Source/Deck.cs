@@ -3,11 +3,23 @@ using System.Collections.Generic;
 
 namespace BattleOfCardsAcesHigh
 {
-	public abstract class Deck
+    public abstract class Deck
     {
-        private List<Card> _deckOfCards;
+        protected List<Card> _deckOfCards;
 
-        public abstract Card DrawTopCard();
-
+        protected Deck(List<Card> deck)
+        {
+            this._deckOfCards = deck;
+        }
+        public Card DrawTopCard()
+        {
+            return _deckOfCards[0];
+        }
     }
+}
+
+
+
+
+
 }
