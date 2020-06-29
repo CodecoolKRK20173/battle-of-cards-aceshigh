@@ -24,6 +24,11 @@ namespace BattleOfCardsAcesHigh
             this._statToCompare = 0;
         }
 
+        public string GetPlayedBy()
+        {
+            return _playedBy;
+        }
+
         public void SetStatToCompare(string chosenStat)
         {
             if (chosenStat == "intelligence")
