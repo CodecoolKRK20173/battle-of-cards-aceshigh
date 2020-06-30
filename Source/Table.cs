@@ -13,6 +13,9 @@ namespace BattleOfCardsAcesHigh.Source
         private List<Card> _winnersCards;
         private LinkedList<Player> _allPlayers;
         private Dealer _januszDealer;
+        private static int _tableWidth = 65;
+        private static int _tableHeight = 44;
+        private List<List<Square>> _tableBoard;
 
         public Table(LinkedList<Player> allPlayers)
         {
