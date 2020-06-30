@@ -16,6 +16,14 @@ namespace BattleOfCardsAcesHigh
             return _deckOfCards[0];
         }
 
+        public bool IsEmpty()
+        {
+            if (_deckOfCards.Count == 0)
+            {
+                return true;
+            }
+            return false;
+        }
 
     }
 }
