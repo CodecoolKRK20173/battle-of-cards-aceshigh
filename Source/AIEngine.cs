@@ -7,7 +7,7 @@ namespace BattleOfCardsAcesHigh
 {
     class AIEngine
     {
-        private int aiLevel;
+        private int aiLevel; // 1 
         public AIEngine(int level)
         {
             this.aiLevel = level;
@@ -15,7 +15,10 @@ namespace BattleOfCardsAcesHigh
         // This code checks played Card's stats and chooses the best attribute
         public string SelectAtttribute(Card playedCard)
         {
-            throw new NotImplementedException();
+            if (aiLevel == 0)
+            {
+                playedCard.
+            }
         }
     }
 }

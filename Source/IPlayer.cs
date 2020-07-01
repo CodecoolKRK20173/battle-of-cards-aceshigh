@@ -6,9 +6,9 @@ namespace BattleOfCardsAcesHigh
 {
     interface IPlayer : IEquatable<Player>
     {
-        Card PlayCard();
-        string CallAttributeToFight(string);
-        void AddCardsToHand(Deck deckForPLayer);
+        Card PlayCard(); // Plays card form top of the player Hand
+        string CallAttributeToFight(string attr);
+        void AddCardsToHand(List<Card> deckForPLayer);
         string GetName();
         bool IsLoser();
 

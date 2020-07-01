@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,7 +12,12 @@ namespace BattleOfCardsAcesHigh
         }
         public override string CallAttributeToFight(string attrName)
         {
-            throw new NotImplementedException();
+            return attrName;
+        }
+
+        public override string CallAttributeToFight(Card playedCard)
+        {
+            return null;
         }
     }
 }
