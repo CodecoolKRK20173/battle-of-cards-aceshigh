@@ -5,8 +5,7 @@ using System.Runtime.CompilerServices;
 namespace BattleOfCardsAcesHigh
 
 {
-
-    public class Card : IComparable<Card>
+    public struct Card : IComparable<Card>
     {
         private int _power;
         private int _speed;
