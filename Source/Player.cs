@@ -15,7 +15,7 @@ namespace BattleOfCardsAcesHigh
         public Player(string name)
         {
             this.playerName = name;
-            this.playerHand = new PlayerHand();
+            this.playerHand = new PlayerHand(new List<Card>());
 
         }
         public abstract string CallAttributeToFight(string attrName);

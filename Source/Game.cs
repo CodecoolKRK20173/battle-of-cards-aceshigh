@@ -18,7 +18,7 @@ namespace BattleOfCardsAcesHigh
 
             for (int ctr = 0; ctr < numberOfPlayers; ctr++)
             {
-                gamePlayers.AddLast(new Player())
+                gamePlayers.AddLast(new HumanPlayer())
             }
 
         }
