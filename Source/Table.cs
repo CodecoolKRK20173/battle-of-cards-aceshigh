@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
@@ -11,14 +12,19 @@ namespace BattleOfCardsAcesHigh.Source
     {
         private List<Card> _playedCards;
         private List<Card> _winnersCards;
-        private LinkedList<Player> _allPlayers;
+        private List<Player> _allPlayers;
+        private int _currentPLayerIndex;
+        private Player _currentPlayer;
         private Dealer _januszDealer;
+        private static int _tableWidth = 65;
+        private static int _tableHeight = 44;
+        private List<List<Square>> _tableBoard;
 
-        public Table(LinkedList<Player> allPlayers)
+        public Table(List<Player> allPlayers)
         {
             this._allPlayers = allPlayers;
-            this._januszDealer = new Dealer(_allPlayers);
-            _januszDealer.DealCards();
+            this._januszDealer = new Dealer();
+            _januszDealer.DealCards(_allPlayers);
              
         }
 
@@ -65,6 +71,23 @@ namespace BattleOfCardsAcesHigh.Source
             return allWinners;
         }
 
+
+        public void SetNextPlayer()
+        {
+            _currentPLayerIndex++;
+
+            if (_currentPLayerIndex == _allPlayers.Count)
+            {
+                _currentPLayerIndex = 0;
+            }
+
+            _currentPlayer = _allPlayers[_currentPLayerIndex];
+        }
+
+        public Player GetCurrentPlayer()
+        {
+            return _currentPlayer;
+        }
 
 
         public void PassCardsToWinner(Player winner)

@@ -3,6 +3,7 @@ using System;
 namespace BattleOfCardsAcesHigh
 
 {
+
     public struct Card : IComparable<Card>
     {
         private int _power;

@@ -16,5 +16,11 @@ namespace BattleOfCardsAcesHigh
             }
 
         }
+
+        public void RemovePlayedCard()
+        {
+            Card playedCard = DrawTopCard();
+            this._deckOfCards.Remove(playedCard);
+        }
     }
 }

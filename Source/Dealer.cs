@@ -8,16 +8,14 @@ namespace BattleOfCardsAcesHigh.Source
 {
     class Dealer : IComparer<Card>
     {
-        private IEnumerable<Player> _allPlayers;
         private MainDeck _mainDeck;
         private PlayerHand _playerHand;
         private IDao _dao = new CsvDao();
 
-        public Dealer(IEnumerable<Player> players)
+        public Dealer()
         {
             this._mainDeck = CreateMainDeck();
             this._mainDeck.Shuffle();
-            this._allPlayers = players;
 
         }
 
@@ -26,13 +24,13 @@ namespace BattleOfCardsAcesHigh.Source
             return _dao.CreateMainDeck();
         }
 
-        public void DealCards()
+        public void DealCards(IEnumerable<Player> allPlayers)
         {
             
-            var splittedDeck = _mainDeck.SplitCards(_allPlayers.Count());
+            var splittedDeck = _mainDeck.SplitCards(allPlayers.Count());
             _mainDeck = null;
 
-            foreach (Player player in _allPlayers)
+            foreach (Player player in allPlayers)
             {
                 _playerHand = new PlayerHand(splittedDeck[0]);
                 splittedDeck.RemoveAt(0);
