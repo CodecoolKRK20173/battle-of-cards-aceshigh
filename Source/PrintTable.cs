@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using BattleOfCardsAcesHigh.Source;
+using System.Collections.Generic;
 
 namespace BattleOfCardsAcesHigh
 
@@ -12,9 +13,15 @@ namespace BattleOfCardsAcesHigh
 
         public PrintTable()
         {
+            _printTable = new List<List<List<Square>>>();
 
         }
 
+        public void PlaceCards(Table newTable)
+        {
+            int numberOfPlayers = (newTable.GetAllPlayers()).Count;
+
+        }
         public override string ToString()
         {
             return base.ToString();

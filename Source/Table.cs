@@ -8,7 +8,7 @@ using System.Text;
 namespace BattleOfCardsAcesHigh.Source
 {
  
-    class Table
+    public class Table
     {
         private List<Card> _playedCards;
         private List<Card> _winnersCards;

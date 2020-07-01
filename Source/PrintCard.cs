@@ -70,6 +70,11 @@ namespace BattleOfCardsAcesHigh
 
         }
 
+        public void PlaceText()
+        {
+
+        }
+
         public override string ToString()
         {
             string printBoard = "";
