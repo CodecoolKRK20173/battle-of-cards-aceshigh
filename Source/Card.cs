@@ -1,19 +1,21 @@
 using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace BattleOfCardsAcesHigh
 
 {
 
-    public struct Card : IComparable<Card>
+    public class Card : IComparable<Card>
     {
         private int _power;
         private int _speed;
         private int _intelligence;
-        private int _statToCompare;
         private string _cardName;
         private string _description;
+        private int _statToCompare;
         private Player _playedBy;
-
+    
         public Card(int power, int speed, int intelligence, string cardName, string description)
         {
             this._power = power;
@@ -48,6 +50,32 @@ namespace BattleOfCardsAcesHigh
             }
         }
 
+        public int GetInt()
+        {
+            return _intelligence;
+        }
+
+        public int GetSpeed()
+        {
+            return _speed;
+        }
+
+        public int GetPower()
+        {
+            return _power;
+        }
+
+        public string GetName()
+        {
+            return _cardName;
+        }
+
+        public string GetDescription()
+        {
+            return _description;
+        }
+
+
         public int CompareTo(Card card)
         {
 
@@ -66,6 +94,7 @@ namespace BattleOfCardsAcesHigh
         }
 
 
+        
         public override string ToString()
         {
      

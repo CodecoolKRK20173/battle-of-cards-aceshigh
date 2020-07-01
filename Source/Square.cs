@@ -8,15 +8,18 @@ namespace BattleOfCardsAcesHigh
         private int _YCoordinates;
         private int _XCoordinates;
         private string _symbol;
-        bool _faceDown;
-        bool _cardCorner;
-        bool _cardHorizontalEdge;
-        bool _cardVerticalEdge;
+        public static bool _faceDown;
+        private bool _cardCorner;
+        private bool _cardHorizontalEdge;
+        private bool _cardVerticalEdge;
 
-        public Square(int yCoordinates, int xCoordinates)
+        public Square(int yCoordinates, int xCoordinates, bool cardCorner, bool cardHEdge, bool cardVEdge)
         {
             this._YCoordinates = yCoordinates;
             this._XCoordinates = xCoordinates;
+            this._cardCorner = cardCorner;
+            this._cardHorizontalEdge = cardHEdge;
+            this._cardVerticalEdge = cardVEdge;
         }
 
         public int GetYCoordinates()
@@ -51,7 +54,7 @@ namespace BattleOfCardsAcesHigh
         public override string ToString()
         {
    
-            if (this._faceDown == true)
+            if (_faceDown == true)
             {
                 if (this._cardCorner == true)
                 {
@@ -74,7 +77,7 @@ namespace BattleOfCardsAcesHigh
                 }
             }
 
-            else if (this._faceDown == false)
+            else if (_faceDown == false)
             {
                 if (this._cardCorner == true)
                 {
