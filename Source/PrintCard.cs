@@ -14,29 +14,29 @@ namespace BattleOfCardsAcesHigh
         public PrintCard()
         {
            _cardBoard = new List<List<Square>>();
-           for (int x = 0; x < _cardHeight; x++)
+           for (int y = 0; y < _cardHeight; x++)
            {
                 _cardRow = new List<Square>();
-                for (int y = 0; y < _cardHeight; y++)
+                for (int x = 0; x < _cardWidth; y++)
                 {
                     if (Square._faceDown == true)
                     {
-                        if ((y == 0 || y == _cardWidth - 1) && (x == 0 || x == _cardHeight - 1))
+                        if ((x == 0 || x == _cardWidth - 1) && (y == 0 || y == _cardHeight - 1))
                         {
                             _cardRow.Add(new Square(y, x, true, false, false));
                         }
 
-                        else if ((y > 0 || y < _cardWidth - 1) && (x == 0 || x == _cardHeight - 1))
+                        else if ((x > 0 || x < _cardWidth - 1) && (y == 0 || y == _cardHeight - 1))
                         {
                             _cardRow.Add(new Square(y, x, false, true, false));
                         }
 
-                        else if ((y == 0 || y == _cardWidth - 1) && (x > 0 || x < _cardHeight - 1))
+                        else if ((x == 0 || x == _cardWidth - 1) && (y > 0 || y < _cardHeight - 1))
                         {
                             _cardRow.Add(new Square(y, x, false, false, true));
                         }
 
-                        else if ((y > 0 || y < _cardWidth - 1) && (x > 0 || x < _cardHeight - 1))
+                        else if ((x > 0 || x < _cardWidth - 1) && (y > 0 || y < _cardHeight - 1))
                         {
                             _cardRow.Add(new Square(y, x, false, false, false));
                         }
@@ -44,22 +44,22 @@ namespace BattleOfCardsAcesHigh
 
                     else if (Square._faceDown == false)
                     {
-                        if ((y == 0 || y == _cardWidth - 1) && (x == 0 || x == _cardHeight - 1))
+                        if ((x == 0 || x == _cardWidth - 1) && (y == 0 || y == _cardHeight - 1))
                         {
                             _cardRow.Add(new Square(y, x, true, false, false));
                         }
 
-                        else if ((y > 0 || y < _cardWidth - 1) && (x == 0 || x == _cardHeight - 1))
+                        else if ((x > 0 || x < _cardWidth - 1) && (y == 0 || y == _cardHeight - 1))
                         {
                             _cardRow.Add(new Square(y, x, false, true, false));
                         }
 
-                        else if ((y == 0 || y == _cardWidth - 1) && (x > 0 || x < _cardHeight - 1))
+                        else if ((x == 0 || x == _cardWidth - 1) && (y > 0 || y < _cardHeight - 1))
                         {
                             _cardRow.Add(new Square(y, x, false, false, true));
                         }
 
-                        else if ((y > 0 || y < _cardWidth - 1) && (x > 0 || x < _cardHeight - 1))
+                        else if ((x > 0 || x < _cardWidth - 1) && (y > 0 || y < _cardHeight - 1))
                         {
                             _cardRow.Add(new Square(y, x, false, false, false));
                         }
@@ -74,13 +74,13 @@ namespace BattleOfCardsAcesHigh
         {
             string printBoard = "";
 
-            for (int x = 0; x < _cardHeight; x++)
+            for (int y = 0; y < _cardHeight; x++)
             {
                 string printRow = "";
 
-                for (int y = 0; y < _cardHeight; y++)
+                for (int x = 0; x < _cardHeight; y++)
                 {
-                    printRow += _cardBoard[x][y];
+                    printRow += _cardBoard[y][x];
                 }
                 printBoard += printRow + "\n";
             }
