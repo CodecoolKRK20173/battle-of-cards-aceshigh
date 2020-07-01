@@ -13,12 +13,10 @@ namespace BattleOfCardsAcesHigh
 
         public PrintCard()
         {
-            this._cardBoard = new List<List<Square>>();
-
-
+           _cardBoard = new List<List<Square>>();
            for (int x = 0; x < _cardHeight; x++)
            {
-           this._cardRow = new List<Square>();
+                _cardRow = new List<Square>();
                 for (int y = 0; y < _cardHeight; y++)
                 {
                     if (Square._faceDown == true)
@@ -74,7 +72,20 @@ namespace BattleOfCardsAcesHigh
 
         public override string ToString()
         {
-            return base.ToString();
+            string printBoard = "";
+
+            for (int x = 0; x < _cardHeight; x++)
+            {
+                string printRow = "";
+
+                for (int y = 0; y < _cardHeight; y++)
+                {
+                    printRow += _cardBoard[x][y];
+                }
+                printBoard += printRow + "\n";
+            }
+
+            return printBoard;
         }
     }
 }
