@@ -19,16 +19,5 @@ namespace BattleOfCardsAcesHigh
             }
         }
 
-        public static void PrintCardFaceDown()
-        {
-            int cardWidth = 19;
-            int cardHeight = 12;
-
-        }
-
-        public static void PrintCommentField()
-        {
-
-        }
     }
 }

@@ -22,6 +22,13 @@ namespace BattleOfCardsAcesHigh
             this._cardVerticalEdge = cardVEdge;
         }
 
+        public Square(int yCoordinates, int xCoordinates, bool cardCorner, bool cardHEdge, bool cardVEdge, bool faceDown)
+            : this(yCoordinates, xCoordinates, cardCorner, cardHEdge, cardVEdge)
+        {
+            _faceDown = faceDown;
+        }
+
+
         public int GetYCoordinates()
         {
             return _YCoordinates;
@@ -53,7 +60,6 @@ namespace BattleOfCardsAcesHigh
         }
         public override string ToString()
         {
-   
             if (_faceDown == true)
             {
                 if (this._cardCorner == true)

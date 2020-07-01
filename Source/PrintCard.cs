@@ -14,10 +14,10 @@ namespace BattleOfCardsAcesHigh
         public PrintCard()
         {
            _cardBoard = new List<List<Square>>();
-           for (int y = 0; y < _cardHeight; x++)
+           for (int y = 0; y < _cardHeight; y++)
            {
                 _cardRow = new List<Square>();
-                for (int x = 0; x < _cardWidth; y++)
+                for (int x = 0; x < _cardWidth; x++)
                 {
                     if (Square._faceDown == true)
                     {
@@ -74,11 +74,11 @@ namespace BattleOfCardsAcesHigh
         {
             string printBoard = "";
 
-            for (int y = 0; y < _cardHeight; x++)
+            for (int y = 0; y < _cardHeight; y++)
             {
                 string printRow = "";
 
-                for (int x = 0; x < _cardHeight; y++)
+                for (int x = 0; x < _cardWidth; x++)
                 {
                     printRow += _cardBoard[y][x];
                 }
