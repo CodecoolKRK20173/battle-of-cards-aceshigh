@@ -16,9 +16,7 @@ namespace BattleOfCardsAcesHigh.Source
         private int _currentPLayerIndex;
         private Player _currentPlayer;
         private Dealer _januszDealer;
-        private static int _tableWidth = 65;
-        private static int _tableHeight = 44;
-        private List<List<Square>> _tableBoard;
+
 
         public Table(List<Player> allPlayers)
         {
@@ -89,6 +87,10 @@ namespace BattleOfCardsAcesHigh.Source
             return _currentPlayer;
         }
 
+        public List<Player> GetAllPlayers()
+        {
+            return _allPlayers;
+        }
 
         public void PassCardsToWinner(Player winner)
         {
