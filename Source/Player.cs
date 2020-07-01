@@ -9,7 +9,7 @@ namespace BattleOfCardsAcesHigh
     public abstract class Player : IPlayer
     {
         private string playerName;
-        private Deck playerHand;
+        private PlayerHand playerHand;
 
 
         public Player(string name)
@@ -19,13 +19,16 @@ namespace BattleOfCardsAcesHigh
 
         }
         public abstract string CallAttributeToFight(string attrName);
+        public abstract string CallAttributeToFight(Card playedCard);
         public Card PlayCard()
         {
-            return playerHand.DrawCard()
+            var _playedCard = playerHand.DrawTopCard();
+            playerHand.RemovePlayedCard();
+            return _playedCard;
         }
-        public void AddCardsToHand(Deck deckForPLayer)
+        public void AddCardsToHand(List<Card> cardsForPlayer)
         {
-            playerHand.AddCards(deckForPLayer);
+            playerHand.AddCards(cardsForPlayer);
         }
         public string GetName()
         {

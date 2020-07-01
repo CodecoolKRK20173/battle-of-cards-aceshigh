@@ -14,7 +14,7 @@ namespace BattleOfCardsAcesHigh
         private string _description;
         private Player _playedBy;
 
-        public Card(int power, int speed, int intelligence, string cardName, string description)
+z        public Card(int power, int speed, int intelligence, string cardName, string description)
         {
             this._power = power;
             this._speed = speed;
@@ -33,15 +33,15 @@ namespace BattleOfCardsAcesHigh
         public void SetStatToCompare(string chosenStat)
         {
             if (chosenStat == "intelligence")
-            { 
-                this._statToCompare = _intelligence; 
+            {
+                this._statToCompare = _intelligence;
             }
 
             else if (chosenStat == "power")
             {
                 this._statToCompare = _power;
             }
-            
+
             else if (chosenStat == "speed")
             {
                 this._statToCompare = _speed;
@@ -68,7 +68,7 @@ namespace BattleOfCardsAcesHigh
 
         public override string ToString()
         {
-     
+
             int cardWidth = 19;
             string cardTopBottom = "+--------------------+\n";
             string cardRow = "|                    |\n";
@@ -78,11 +78,11 @@ namespace BattleOfCardsAcesHigh
             string cardSpeed = "| Speed: " + _description.PadRight(cardWidth - (_speed.ToString().Length + 7)) + "|" + "\n";
             string cardInt = "| Intelligence: " + _description.PadRight(cardWidth - (_intelligence.ToString().Length + 14)) + "|" + "\n";
             string printCard = cardTopBottom + cardRow + cardName + cardDescription + cardRow + cardRow + cardRow + cardRow + cardPower + cardSpeed + cardInt + cardRow + cardTopBottom;
-            
+
             return printCard;
 
         }
-        
+
     }
 }
 
