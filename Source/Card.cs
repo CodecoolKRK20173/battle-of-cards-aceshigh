@@ -14,8 +14,7 @@ namespace BattleOfCardsAcesHigh
         private string _description;
         private int _statToCompare;
         private Player _playedBy;
-
-z        public Card(int power, int speed, int intelligence, string cardName, string description)
+        public Card(int power, int speed, int intelligence, string cardName, string description)
         {
             this._power = power;
             this._speed = speed;
