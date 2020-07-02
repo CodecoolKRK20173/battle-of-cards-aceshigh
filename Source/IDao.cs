@@ -6,7 +6,7 @@ namespace BattleOfCardsAcesHigh.Source
 {
     interface IDao
     {
-        MainDeck CreateMainDeck();
+        MainDeck CreateMainDeck(int numberOfPlayers);
 
     }
 }

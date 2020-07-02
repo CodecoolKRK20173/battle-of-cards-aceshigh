@@ -21,7 +21,7 @@ namespace BattleOfCardsAcesHigh.Source
         public Table(List<Player> allPlayers)
         {
             this._allPlayers = allPlayers;
-            this._januszDealer = new Dealer();
+            this._januszDealer = new Dealer(_allPlayers.Count);
             _januszDealer.DealCards(_allPlayers);
              
         }

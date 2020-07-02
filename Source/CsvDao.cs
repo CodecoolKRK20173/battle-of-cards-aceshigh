@@ -16,11 +16,11 @@ namespace BattleOfCardsAcesHigh.Source
         private int _intelligence;
         private string _description;
 
-        public MainDeck CreateMainDeck()
+        public MainDeck CreateMainDeck(int numberOfPlayers)
         {
             _fileContent = File.ReadLines(_fileName);
             var cardList = new List<Card>();
-
+            
             foreach(string line in _fileContent)
             {
                 var splittedLine = line.Split(",");
@@ -34,7 +34,7 @@ namespace BattleOfCardsAcesHigh.Source
             }
 
 
-           return new MainDeck(cardList);
+           return new MainDeck(cardList, numberOfPlayers);
         }
     }
 }
