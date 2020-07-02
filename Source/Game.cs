@@ -84,6 +84,7 @@ namespace BattleOfCardsAcesHigh
         {
             while (!GameEnd())
             {
+                Console.WriteLine(GetCurrentPlayer().PeekCard());
                 string statToCompare = GetStatToCompare();
                 _table.PlayCards();
                 var playedCards =_table.GetPlayedCards();

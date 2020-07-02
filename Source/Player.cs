@@ -26,6 +26,11 @@ namespace BattleOfCardsAcesHigh
             playerHand.RemovePlayedCard();
             return _playedCard;
         }
+
+        public Card PeekCard()
+        {
+            return playerHand.DrawTopCard();
+        }
         public void AddCardsToHand(List<Card> cardsForPlayer)
         {
             playerHand.AddCards(cardsForPlayer);
