@@ -21,6 +21,8 @@ namespace BattleOfCardsAcesHigh
                 gamePlayers.Add(new HumanPlayer(userName));
             }
 
+            ShufflePlayers(gamePlayers);
+
             _table = new Table(gamePlayers);
 
         }
@@ -35,6 +37,73 @@ namespace BattleOfCardsAcesHigh
         public Player GetCurrentPlayer()
         {
             return _table.GetCurrentPlayer();
+        }
+
+        public string GetStatToCompare()
+        {
+            string statToCompare = "";
+
+            while (statToCompare != "i" && statToCompare != "s" && statToCompare != "p" && statToCompare != "intelligence" && statToCompare != "speed" && statToCompare != "power")
+            {
+                Console.WriteLine($"{GetCurrentPlayer().GetName()} please choose the attribute to fight:\ni - intelligence;\ns - speed;\np - power");
+                statToCompare = Console.ReadLine().ToLower();
+            }
+
+            if (statToCompare == "i")
+            {
+                statToCompare = "intelligence";
+            }
+            else if (statToCompare == "s")
+            {
+                statToCompare = "speed";
+            }
+            else if (statToCompare == "p")
+            {
+                statToCompare = "power";
+            }
+
+            return statToCompare;
+        }
+
+        public void ShufflePlayers(List<Player> gamePlayers)
+        {
+            Random rng = new Random();
+            int n = gamePlayers.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                Player value = gamePlayers[k];
+                gamePlayers[k] = gamePlayers[n];
+                gamePlayers[n] = value;
+
+            }
+        }
+
+        public void Play()
+        {
+            while (!GameEnd())
+            {
+                string statToCompare = GetStatToCompare();
+                _table.PlayCards();
+                var playedCards =_table.GetPlayedCards();
+                _table.SetWinnerCards(playedCards);
+                _table.SortPlayedCards(playedCards, statToCompare);
+                while (!_table.IsONeTurnWinner())
+                {
+                    _table.PlayCards(_table.GetAllTurnWinners());
+                    playedCards = _table.GetPlayedCards();
+                    _table.SetWinnerCards(playedCards);
+                    _table.SortPlayedCards(playedCards, statToCompare);
+                }
+                _table.PassCardsToWinner(_table.GetTurnWinner());
+                _table.ResetWinnerCards();
+                _table.RemoveLosers();
+                _table.SetNextPlayer();
+
+            }
+
+            Console.WriteLine($"{GetCurrentPlayer().GetName()} WON!");
         }
     }
 }

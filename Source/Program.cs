@@ -6,7 +6,8 @@ namespace BattleOfCardsAcesHigh
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Cthulhu Fhtang!");
+            Game game = new Game(4);
+            game.Play();
         }
     }
 }

@@ -109,5 +109,42 @@ namespace BattleOfCardsAcesHigh.Source
                 }
             }
         }
+
+        public void SetWinnerCards(List<Card> winnerCards)
+        {
+            this._winnersCards.AddRange(winnerCards);
+        }
+
+        public void ResetWinnerCards()
+        {
+            this._winnersCards = new List<Card>();
+        }
+
+        public void PlayCards()
+        {
+            List<Card> playedCards = new List<Card>();
+            foreach (Player player in _allPlayers)
+            {
+                playedCards.Add(player.PlayCard());
+            }
+
+            this._playedCards = playedCards;
+        }
+
+        public void PlayCards(List<Player> turnPlayers)
+        {
+            List<Card> playedCards = new List<Card>();
+            foreach (Player player in turnPlayers)
+            {
+                playedCards.Add(player.PlayCard());
+            }
+
+            this._playedCards = playedCards;
+        }
+
+        public List<Card> GetPlayedCards()
+        {
+            return _playedCards;
+        }
     }
 }
