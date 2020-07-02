@@ -39,6 +39,23 @@ namespace BattleOfCardsAcesHigh
         public void PlaceCards(Table newTable)
         {
             int numberOfPlayers = (newTable.GetAllPlayers()).Count;
+   
+
+            if (numberOfPlayers == 4)
+            {
+ 
+
+            }
+
+            else if (numberOfPlayers == 3)
+            {
+
+            }
+
+            else if (numberOfPlayers == 1)
+            {
+
+            }
 
         }
         public override string ToString()

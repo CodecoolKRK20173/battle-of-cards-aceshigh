@@ -6,10 +6,17 @@ namespace BattleOfCardsAcesHigh
     public class MainDeck : Deck
 
     {
-        public MainDeck(List<Card> deck) : base(deck) { }
+        public MainDeck(List<Card> deck, int numberOfPlayers) : base(deck) 
+        {
+            for (int i = 1; i < numberOfPlayers; i++)
+            {
+                this._deckOfCards.AddRange(deck);
+            }
 
-    
-    public void Shuffle()
+        }
+        
+
+        public void Shuffle()
         {
             Random randomDeck = new Random();
             int numberOfCards = _deckOfCards.Count;

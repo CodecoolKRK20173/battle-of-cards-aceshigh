@@ -7,7 +7,7 @@ namespace BattleOfCardsAcesHigh
     {
         protected List<Card> _deckOfCards;
 
-        protected Deck(List<Card> deck)
+        public Deck(List<Card> deck)
         {
             this._deckOfCards = deck;
         }
