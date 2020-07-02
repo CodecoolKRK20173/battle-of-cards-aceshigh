@@ -10,7 +10,7 @@ namespace BattleOfCardsAcesHigh
     {
         private string playerName;
         private PlayerHand playerHand;
-
+        private bool _isLoser;
 
         public Player(string name)
         {
@@ -34,13 +34,17 @@ namespace BattleOfCardsAcesHigh
         {
             return playerName;
         }
-        public bool IsLoser()
+        public void CheckIfLoser()
         {
             if (playerHand.IsEmpty())
             {
-                return true;
+                _isLoser = true;
             }
-            return false;
+        }
+
+        public bool IsLoser()
+        {
+            return _isLoser;
         }
         public bool Equals(Player other)
         {

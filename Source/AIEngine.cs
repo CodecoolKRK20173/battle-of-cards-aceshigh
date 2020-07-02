@@ -15,10 +15,12 @@ namespace BattleOfCardsAcesHigh
         // This code checks played Card's stats and chooses the best attribute
         public string SelectAtttribute(Card playedCard)
         {
-            if (aiLevel == 0)
-            {
-                playedCard.
-            }
+            string attribute = "";
+            //if (aiLevel == 0)
+            //{
+            //    playedCard.
+            //}
+            return attribute;
         }
     }
 }

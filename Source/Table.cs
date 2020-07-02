@@ -40,7 +40,7 @@ namespace BattleOfCardsAcesHigh.Source
 
         }
 
-        public bool IsONeWinner()
+        public bool IsONeTurnWinner()
         {
             if (_playedCards[0].CompareTo(_playedCards[1]) == 0)
             {
@@ -50,12 +50,12 @@ namespace BattleOfCardsAcesHigh.Source
             return true;
         }
 
-        public Player GetWinner()
+        public Player GetTurnWinner()
         {
             return _playedCards[0].GetPlayedBy();
         }
 
-        public List<Player> GetAllWinners()
+        public List<Player> GetAllTurnWinners()
         {
             var allWinners = new List<Player>();
 
@@ -95,6 +95,19 @@ namespace BattleOfCardsAcesHigh.Source
         public void PassCardsToWinner(Player winner)
         {
             winner.AddCardsToHand(_winnersCards);
+        }
+
+        public void RemoveLosers()
+        {
+            foreach (Player player in _allPlayers)
+            {
+                player.CheckIfLoser();
+
+                if (player.IsLoser())
+                {
+                    _allPlayers.Remove(player);
+                }
+            }
         }
     }
 }
