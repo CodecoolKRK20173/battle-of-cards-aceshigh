@@ -9,7 +9,6 @@ namespace BattleOfCardsAcesHigh.Source
     class Dealer : IComparer<Card>
     {
         private MainDeck _mainDeck;
-        private PlayerHand _playerHand;
         private IDao _dao = new CsvDao();
 
         public Dealer()
@@ -32,9 +31,8 @@ namespace BattleOfCardsAcesHigh.Source
 
             foreach (Player player in allPlayers)
             {
-                _playerHand = new PlayerHand(splittedDeck[0]);
+                player.AddCardsToHand(splittedDeck[0]);
                 splittedDeck.RemoveAt(0);
-                player.AddCardsToHand(_playerHand);
             }
 
         }
