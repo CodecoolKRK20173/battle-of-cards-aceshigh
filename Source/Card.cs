@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace BattleOfCardsAcesHigh
@@ -113,16 +114,56 @@ namespace BattleOfCardsAcesHigh
 
         public override string ToString()
         {
-
+            string printCard = "";
             int cardWidth = 19;
             string cardTopBottom = "+--------------------+\n";
             string cardRow = "|                    |\n";
-            string cardName = "| " + _cardName.PadRight(cardWidth - _cardName.Length) + " |" + "\n";
-            string cardDescription = "| " + _description.PadRight(_description.Length) + " |" + "\n";
-            string cardPower = "| Power: " + _power.ToString().PadRight(cardWidth - (_power.ToString().Length + 7)) + " |" + "\n";
+            string cardName = "| " + _cardName.PadRight(cardWidth-1) + " |" + "\n";
             string cardSpeed = "| Speed: " + _speed.ToString().PadRight(cardWidth - (_speed.ToString().Length + 7)) + " |" + "\n";
             string cardInt = "| Intelligence: " + _intelligence.ToString().PadRight(cardWidth - (_intelligence.ToString().Length + 14)) + " |" + "\n";
-            string printCard = cardTopBottom + cardRow + cardName + cardDescription + cardRow + cardRow + cardRow + cardRow + cardPower + cardSpeed + cardInt + cardRow + cardTopBottom;
+ 
+            
+            string cardPower = "";
+            if (_power.ToString().Length == 2)
+            {
+                cardPower += "| Power: " + _power.ToString().PadRight(cardWidth - (_power.ToString().Length + 6)) + " |" + "\n";
+            }
+
+            else if (_power.ToString().Length == 1)
+            {
+                cardPower += "| Power: " + _power.ToString().PadRight(cardWidth - (_power.ToString().Length + 7)) + " |" + "\n";
+            }
+
+            string cardDescription = "";
+            if (_description.Length >= cardWidth)
+            {
+                var splitDescription = _description.Split(" ");
+                int splitCount = splitDescription.Count();
+                string line1 = "";
+                string line2 = "";
+      
+                for (int i = 0; i < splitCount; i++)
+                {
+                    if (i <= 1)
+                    {
+                        line1 += splitDescription[i] + " ";
+                    }
+
+                    else 
+                    {
+                        line2 += splitDescription[i] + " ";
+                    }
+                }
+                cardDescription += "| " + line1.PadRight(cardWidth - 1) + " |" + "\n" + "| " + line2.PadRight(cardWidth - 1) + " |" + "\n";
+                printCard += cardTopBottom + cardRow + cardName + cardRow + cardDescription + cardRow + cardRow + cardRow + cardPower + cardSpeed + cardInt + cardRow + cardTopBottom;
+            }
+            
+            else if (_description.Length < cardWidth)
+            {
+                cardDescription += "| " + _description.PadRight(cardWidth - 1) + " |" + "\n";
+                printCard += cardTopBottom + cardRow + cardName + cardRow + cardDescription + cardRow + cardRow + cardRow + cardRow + cardPower + cardSpeed + cardInt + cardRow + cardTopBottom;
+            }
+
 
             return printCard;
 
