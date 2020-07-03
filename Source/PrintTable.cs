@@ -7,40 +7,47 @@ namespace BattleOfCardsAcesHigh
 {
     public class PrintTable
     {
-        private static int _tableHeight = 50;
-        private static int _tableWidth = 65;
-
+        private int _tableHeight = 65;
+        private int _tableWidth = 47;
+        private List<List<string>> _printTable;
 
         public PrintTable()
         {
-             
+            this._printTable = new List<List<string>>();
+            List<string> tableRow = new List<string>();
+            string element = "";
+
+            for (int y = 0; y < _tableWidth; y++)
+            {
+                tableRow = new List<string>();
+
+                for (int x = 0; x < _tableHeight; x++)
+                {
+                    tableRow.Add(element);
+                }
+
+                _printTable.Add(tableRow);
+
+            }
         }
 
-        public void PlaceCards(Table newTable)
-        {
-            int numberOfPlayers = (newTable.GetAllPlayers()).Count;
-   
-
-            if (numberOfPlayers == 4)
-            {
- 
-
-            }
-
-            else if (numberOfPlayers == 3)
-            {
-
-            }
-
-            else if (numberOfPlayers == 1)
-            {
-
-            }
-
-        }
         public override string ToString()
         {
-            return base.ToString();
+            string printTable = "+=================================================================+\n";
+
+            for (int y = 0; y < _tableWidth; y++)
+            {
+                string printrow = "";
+
+                for (int x = 0; x < _tableHeight; x++)
+                {
+                    printrow += _printTable[y][x] + " ";
+                }
+
+                printTable += "|" + printrow + "|" + "\n";
+            }
+
+            return printTable + "+=================================================================+\n";
         }
     }
 

@@ -146,5 +146,33 @@ namespace BattleOfCardsAcesHigh.Source
         {
             return _playedCards;
         }
+
+        public void PlaceCards()
+        {
+            int cardLength = 19;
+            foreach (Card card in _playedCards)
+            {
+                if (_allPlayers.Count == 4)
+                {
+
+
+                }
+
+                else if (_allPlayers.Count == 3)
+                {
+
+                }
+
+                else if (_allPlayers.Count == 2)
+                {
+
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

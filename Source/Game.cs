@@ -84,6 +84,8 @@ namespace BattleOfCardsAcesHigh
         {
             while (!GameEnd())
             {
+                PrintTable printTable = new PrintTable();
+                Console.WriteLine(printTable); 
                 Console.WriteLine($"\nThis is the next card of {GetCurrentPlayer().GetName()}:\n{GetCurrentPlayer().PeekCard()}");
                 string statToCompare = GetStatToCompare();
                 _table.PlayCards(statToCompare);
