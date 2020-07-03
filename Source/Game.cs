@@ -90,7 +90,7 @@ namespace BattleOfCardsAcesHigh
                 var playedCards =_table.GetPlayedCards();
                 _table.ResetWinnerCards();
                 _table.SetWinnerCards(playedCards);
-                _table.SortPlayedCards(playedCards, statToCompare);
+                _table.SortPlayedCards(playedCards);
                 foreach (Card card in _table.GetPlayedCards())
                 {
                     Console.WriteLine(card);
@@ -100,7 +100,7 @@ namespace BattleOfCardsAcesHigh
                     _table.PlayCards(_table.GetAllTurnWinners(), statToCompare);
                     playedCards = _table.GetPlayedCards();
                     _table.SetWinnerCards(playedCards);
-                    _table.SortPlayedCards(playedCards, statToCompare);
+                    _table.SortPlayedCards(playedCards);
                     foreach (Card card in _table.GetPlayedCards())
                     {
                         Console.WriteLine(card);

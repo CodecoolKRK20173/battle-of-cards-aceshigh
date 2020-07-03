@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace BattleOfCardsAcesHigh.Source
@@ -28,7 +27,7 @@ namespace BattleOfCardsAcesHigh.Source
         }
 
 
-        public void SortPlayedCards(List<Card> playedCards, string statToCompare)
+        public void SortPlayedCards(List<Card> playedCards)
         {
 
             playedCards.Sort(_januszDealer);

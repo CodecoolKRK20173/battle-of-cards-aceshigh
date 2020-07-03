@@ -122,7 +122,7 @@ namespace BattleOfCardsAcesHigh
             string cardPower = "| Power: " + _power.ToString().PadRight(cardWidth - (_power.ToString().Length + 7)) + " |" + "\n";
             string cardSpeed = "| Speed: " + _speed.ToString().PadRight(cardWidth - (_speed.ToString().Length + 7)) + " |" + "\n";
             string cardInt = "| Intelligence: " + _intelligence.ToString().PadRight(cardWidth - (_intelligence.ToString().Length + 14)) + " |" + "\n";
-            string printCard = cardTopBottom + cardRow + cardName + cardDescription + cardRow + cardRow + cardRow + cardRow + cardPower + cardSpeed + cardInt + cardRow + cardTopBottom + GetStatToCompare().ToString() + _chosenStat;
+            string printCard = cardTopBottom + cardRow + cardName + cardDescription + cardRow + cardRow + cardRow + cardRow + cardPower + cardSpeed + cardInt + cardRow + cardTopBottom;
 
             return printCard;
 

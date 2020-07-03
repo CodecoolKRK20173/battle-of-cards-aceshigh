@@ -16,8 +16,6 @@ namespace BattleOfCardsAcesHigh.Source
         {
             this._mainDeck = CreateMainDeck(numberOfPlayers);
             this._mainDeck.Shuffle();
-            Console.WriteLine(_mainDeck.Count());
-
         }
 
         private MainDeck CreateMainDeck(int numberOfPlayers)
