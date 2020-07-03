@@ -9,6 +9,7 @@ namespace BattleOfCardsAcesHigh
     class Game
     {
         private Table _table;
+      
 
         public Game(int numberOfPlayers)
         {
@@ -84,12 +85,14 @@ namespace BattleOfCardsAcesHigh
         {
             while (!GameEnd())
             {
-                PrintTable printTable = new PrintTable();
-                Console.WriteLine(printTable); 
+                
+                
                 Console.WriteLine($"\nThis is the next card of {GetCurrentPlayer().GetName()}:\n{GetCurrentPlayer().PeekCard()}");
                 string statToCompare = GetStatToCompare();
                 _table.PlayCards(statToCompare);
                 var playedCards =_table.GetPlayedCards();
+                _table.GetPrintTable().PlaceTopCard(playedCards);
+                Console.WriteLine(_table);
                 _table.ResetWinnerCards();
                 _table.SetWinnerCards(playedCards);
                 _table.SortPlayedCards(playedCards);
