@@ -71,7 +71,7 @@ namespace BattleOfCardsAcesHigh.Source
         {
             _currentPLayerIndex++;
 
-            if (_currentPLayerIndex == _allPlayers.Count)
+            if (_currentPLayerIndex >= _allPlayers.Count)
             {
                 _currentPLayerIndex = 0;
             }
@@ -96,7 +96,7 @@ namespace BattleOfCardsAcesHigh.Source
 
         public void RemoveLosers()
         {
-            foreach (Player player in _allPlayers)
+            foreach (Player player in _allPlayers.Reverse<Player>())
             {
                 player.CheckIfLoser();
 
