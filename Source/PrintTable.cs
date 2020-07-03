@@ -61,6 +61,48 @@ namespace BattleOfCardsAcesHigh
             }
         }
 
+        public void PlaceLeftCard(List<Card> playedCard)
+        {
+            int index = 0;
+            for (int y = 17; y < 30; y++)
+            {
+                for (int x = 2; x < 24; x++)
+                {
+                    char characterString = playedCard[2].ToString()[index];
+                    _printTable[y][x] = characterString.ToString();
+                    index++;
+                }
+            }
+        }
+        public void PlaceBottomCard(List<Card> playedCard)
+        {
+            int index = 0;
+            for (int y = 32; y < 45; y++)
+            {
+                for (int x = 37; x < 59; x++)
+                {
+                    char characterString = playedCard[1].ToString()[index];
+                    _printTable[y][x] = characterString.ToString();
+                    index++;
+                }
+            }
+        }
+
+        public void PlaceRightCard(List<Card> playedCard)
+        {
+            int index = 0;
+            for (int y = 17; y < 30; y++)
+            {
+                for (int x = 72; x < 94; x++)
+                {
+                    char characterString = playedCard[3].ToString()[index];
+                    _printTable[y][x] = characterString.ToString();
+                    index++;
+                }
+            }
+        }
+
+
     }
 
 

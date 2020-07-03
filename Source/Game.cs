@@ -92,6 +92,9 @@ namespace BattleOfCardsAcesHigh
                 _table.PlayCards(statToCompare);
                 var playedCards =_table.GetPlayedCards();
                 _table.GetPrintTable().PlaceTopCard(playedCards);
+                _table.GetPrintTable().PlaceLeftCard(playedCards);
+                _table.GetPrintTable().PlaceBottomCard(playedCards);
+                _table.GetPrintTable().PlaceRightCard(playedCards);
                 Console.WriteLine(_table);
                 _table.ResetWinnerCards();
                 _table.SetWinnerCards(playedCards);
