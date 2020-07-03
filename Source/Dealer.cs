@@ -11,10 +11,12 @@ namespace BattleOfCardsAcesHigh.Source
         private MainDeck _mainDeck;
         private IDao _dao = new CsvDao();
 
+
         public Dealer(int numberOfPlayers)
         {
             this._mainDeck = CreateMainDeck(numberOfPlayers);
             this._mainDeck.Shuffle();
+            Console.WriteLine(_mainDeck.Count());
 
         }
 

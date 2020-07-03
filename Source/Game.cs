@@ -84,21 +84,30 @@ namespace BattleOfCardsAcesHigh
         {
             while (!GameEnd())
             {
-                Console.WriteLine(GetCurrentPlayer().PeekCard());
+                Console.WriteLine($"\nThis is the next card of {GetCurrentPlayer().GetName()}:\n{GetCurrentPlayer().PeekCard()}");
                 string statToCompare = GetStatToCompare();
-                _table.PlayCards();
+                _table.PlayCards(statToCompare);
                 var playedCards =_table.GetPlayedCards();
+                _table.ResetWinnerCards();
                 _table.SetWinnerCards(playedCards);
                 _table.SortPlayedCards(playedCards, statToCompare);
+                foreach (Card card in _table.GetPlayedCards())
+                {
+                    Console.WriteLine(card);
+                }
                 while (!_table.IsONeTurnWinner())
                 {
-                    _table.PlayCards(_table.GetAllTurnWinners());
+                    _table.PlayCards(_table.GetAllTurnWinners(), statToCompare);
                     playedCards = _table.GetPlayedCards();
                     _table.SetWinnerCards(playedCards);
                     _table.SortPlayedCards(playedCards, statToCompare);
+                    foreach (Card card in _table.GetPlayedCards())
+                    {
+                        Console.WriteLine(card);
+                    }
+                    Console.ReadKey();
                 }
                 _table.PassCardsToWinner(_table.GetTurnWinner());
-                _table.ResetWinnerCards();
                 _table.RemoveLosers();
                 _table.SetNextPlayer();
 

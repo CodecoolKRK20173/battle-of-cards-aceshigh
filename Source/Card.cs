@@ -12,8 +12,9 @@ namespace BattleOfCardsAcesHigh
         private int _intelligence;
         private string _cardName;
         private string _description;
-        private int _statToCompare;
         private Player _playedBy;
+        private string _chosenStat;
+
         public Card(int power, int speed, int intelligence, string cardName, string description)
         {
             this._power = power;
@@ -22,7 +23,8 @@ namespace BattleOfCardsAcesHigh
             this._description = description;
             this._playedBy = null;
             this._cardName = cardName;
-            this._statToCompare = 0;
+            this._chosenStat = null;
+   
         }
 
         public Player GetPlayedBy()
@@ -30,22 +32,28 @@ namespace BattleOfCardsAcesHigh
             return _playedBy;
         }
 
-        public void SetStatToCompare(string chosenStat)
+        public void SetPlayedBy(Player player)
         {
-            if (chosenStat == "intelligence")
+            this._playedBy = player;
+        }
+
+        public int GetStatToCompare()
+        {
+            if (_chosenStat == "intelligence")
             {
-                this._statToCompare = _intelligence;
+                return _intelligence;
             }
 
-            else if (chosenStat == "power")
+            else if (_chosenStat == "power")
             {
-                this._statToCompare = _power;
+                return _power;
             }
 
-            else if (chosenStat == "speed")
+            else if (_chosenStat == "speed")
             {
-                this._statToCompare = _speed;
+                return _speed;
             }
+            return 0;
         }
 
         public int GetInt()
@@ -73,15 +81,25 @@ namespace BattleOfCardsAcesHigh
             return _description;
         }
 
+        public void SetChosenStat(string chosenStat)
+        {
+            _chosenStat = chosenStat;
+        }
+
+        public string GetChosenStat()
+
+        {
+            return _chosenStat;
+        }
 
         public int CompareTo(Card card)
         {
 
-            if (this._statToCompare > card._statToCompare)
+            if (this.GetStatToCompare() > card.GetStatToCompare())
             {
                 return -1;
             }
-            else if (this._statToCompare < card._statToCompare)
+            else if (this.GetStatToCompare() < card.GetStatToCompare())
             {
                 return 1;
             }
@@ -99,12 +117,12 @@ namespace BattleOfCardsAcesHigh
             int cardWidth = 19;
             string cardTopBottom = "+--------------------+\n";
             string cardRow = "|                    |\n";
-            string cardName = "| " + _cardName.PadRight(cardWidth - _cardName.Length) + "|" + "\n";
-            string cardDescription = "| " + _description.PadRight(cardWidth - _description.Length) + "|" + "\n";
-            string cardPower = "| Power: " + _description.PadRight(cardWidth - (_power.ToString().Length + 7)) + "|" + "\n";
-            string cardSpeed = "| Speed: " + _description.PadRight(cardWidth - (_speed.ToString().Length + 7)) + "|" + "\n";
-            string cardInt = "| Intelligence: " + _description.PadRight(cardWidth - (_intelligence.ToString().Length + 14)) + "|" + "\n";
-            string printCard = cardTopBottom + cardRow + cardName + cardDescription + cardRow + cardRow + cardRow + cardRow + cardPower + cardSpeed + cardInt + cardRow + cardTopBottom;
+            string cardName = "| " + _cardName.PadRight(cardWidth - _cardName.Length) + " |" + "\n";
+            string cardDescription = "| " + _description.PadRight(_description.Length) + " |" + "\n";
+            string cardPower = "| Power: " + _power.ToString().PadRight(cardWidth - (_power.ToString().Length + 7)) + " |" + "\n";
+            string cardSpeed = "| Speed: " + _speed.ToString().PadRight(cardWidth - (_speed.ToString().Length + 7)) + " |" + "\n";
+            string cardInt = "| Intelligence: " + _intelligence.ToString().PadRight(cardWidth - (_intelligence.ToString().Length + 14)) + " |" + "\n";
+            string printCard = cardTopBottom + cardRow + cardName + cardDescription + cardRow + cardRow + cardRow + cardRow + cardPower + cardSpeed + cardInt + cardRow + cardTopBottom + GetStatToCompare().ToString() + _chosenStat;
 
             return printCard;
 

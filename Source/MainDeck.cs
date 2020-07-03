@@ -6,12 +6,16 @@ namespace BattleOfCardsAcesHigh
     public class MainDeck : Deck
 
     {
-        public MainDeck(List<Card> deck, int numberOfPlayers) : base(deck) 
+        public MainDeck(List<Card> deck, int numberOfPlayers) : base(deck)
         {
+            var deckExtension = new List<Card>();
+
             for (int i = 1; i < numberOfPlayers; i++)
             {
-                this._deckOfCards.AddRange(deck);
+                deckExtension.AddRange(deck); 
             }
+
+            this._deckOfCards.AddRange(deckExtension);
 
         }
         
@@ -35,14 +39,17 @@ namespace BattleOfCardsAcesHigh
         {
             int index = 0;
             List<List<Card>> listOfLists = new List<List<Card>>();
+            for (int i = 0; i < numberOfPlayers; i++)
+            {
+                listOfLists.Add(new List<Card>());
+            }
             
-
             foreach (Card card in _deckOfCards)
             {
                 listOfLists[index].Add(card);
                 index++;
 
-                if (index > numberOfPlayers)
+                if (index == numberOfPlayers)
                 {
                     index = 0;
                 }

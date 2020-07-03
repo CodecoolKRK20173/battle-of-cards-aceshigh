@@ -8,7 +8,7 @@ namespace BattleOfCardsAcesHigh.Source
 {
     class CsvDao : IDao
     {
-        private string _fileName = "statistics.csv";
+        private string _fileName = @"../statistics.csv";
         private IEnumerable<string> _fileContent;
         private string _name;
         private int _power;
@@ -25,7 +25,7 @@ namespace BattleOfCardsAcesHigh.Source
             {
                 var splittedLine = line.Split(",");
                 _name = splittedLine[0];
-                _name = splittedLine[1];
+                _description = splittedLine[1];
                 _power = Int32.Parse(splittedLine[2]);
                 _speed = Int32.Parse(splittedLine[3]);
                 _intelligence = Int32.Parse(splittedLine[4]);

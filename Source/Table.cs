@@ -23,16 +23,13 @@ namespace BattleOfCardsAcesHigh.Source
             this._allPlayers = allPlayers;
             this._januszDealer = new Dealer(_allPlayers.Count);
             _januszDealer.DealCards(_allPlayers);
-             
+            _currentPlayer = _allPlayers[_currentPLayerIndex];
+
         }
 
 
         public void SortPlayedCards(List<Card> playedCards, string statToCompare)
         {
-            foreach (Card card in playedCards)
-            {
-                card.SetStatToCompare(statToCompare);
-            }
 
             playedCards.Sort(_januszDealer);
 
@@ -120,23 +117,27 @@ namespace BattleOfCardsAcesHigh.Source
             this._winnersCards = new List<Card>();
         }
 
-        public void PlayCards()
+        public void PlayCards(string chosenStat)
         {
             List<Card> playedCards = new List<Card>();
             foreach (Player player in _allPlayers)
             {
-                playedCards.Add(player.PlayCard());
+                var playedCard = player.PlayCard();
+                playedCard.SetChosenStat(chosenStat);
+                playedCards.Add(playedCard);
             }
 
             this._playedCards = playedCards;
         }
 
-        public void PlayCards(List<Player> turnPlayers)
+        public void PlayCards(List<Player> turnPlayers, string chosenStat)
         {
             List<Card> playedCards = new List<Card>();
             foreach (Player player in turnPlayers)
             {
-                playedCards.Add(player.PlayCard());
+                var playedCard = player.PlayCard();
+                playedCard.SetChosenStat(chosenStat);
+                playedCards.Add(playedCard);
             }
 
             this._playedCards = playedCards;

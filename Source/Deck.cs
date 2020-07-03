@@ -25,5 +25,10 @@ namespace BattleOfCardsAcesHigh
             return false;
         }
 
+        public int Count()
+        {
+            return _deckOfCards.Count;
+        }
+
     }
 }

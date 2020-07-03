@@ -23,7 +23,9 @@ namespace BattleOfCardsAcesHigh
         public Card PlayCard()
         {
             var _playedCard = playerHand.DrawTopCard();
+            _playedCard.SetPlayedBy(this);
             playerHand.RemovePlayedCard();
+            Console.WriteLine($"{playerName} has {playerHand.Count()} cards left.");
             return _playedCard;
         }
 
