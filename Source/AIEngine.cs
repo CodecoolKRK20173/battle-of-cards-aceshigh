@@ -7,7 +7,7 @@ namespace BattleOfCardsAcesHigh
 {
     class AIEngine
     {
-        private int aiLevel; // 1 
+        private int aiLevel; // 1
         public AIEngine(int level)
         {
             this.aiLevel = level;
@@ -18,7 +18,7 @@ namespace BattleOfCardsAcesHigh
             string attribute = "";
             //if (aiLevel == 0)
             //{
-            //    playedCard.
+            //    playedCard.,.,.,.,.,.
             //}
             return attribute;
         }

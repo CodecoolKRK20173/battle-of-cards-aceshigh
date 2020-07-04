@@ -8,7 +8,8 @@ namespace BattleOfCardsAcesHigh.Source
 {
     class CsvDao : IDao
     {
-        private string _fileName = @"../statistics.csv";
+        private string _fileName = "statistics.csv";
+        private string _filespath = Directory.GetCurrentDirectory() + "/Source/Files/";
         private IEnumerable<string> _fileContent;
         private string _name;
         private int _power;
@@ -18,9 +19,9 @@ namespace BattleOfCardsAcesHigh.Source
 
         public MainDeck CreateMainDeck(int numberOfPlayers)
         {
-            _fileContent = File.ReadLines(_fileName);
+            _fileContent = File.ReadLines(_filespath + _fileName);
             var cardList = new List<Card>();
-            
+
             foreach(string line in _fileContent)
             {
                 var splittedLine = line.Split(",");
