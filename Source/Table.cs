@@ -117,6 +117,11 @@ namespace BattleOfCardsAcesHigh.Source
             this._winnersCards.AddRange(winnerCards);
         }
 
+        public List<Card> GetWinnerCards()
+        {
+            return _winnersCards;
+        }
+
         public void ResetWinnerCards()
         {
             this._winnersCards = new List<Card>();
