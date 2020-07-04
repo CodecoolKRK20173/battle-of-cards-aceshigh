@@ -49,6 +49,7 @@ namespace BattleOfCardsAcesHigh
 
         public void PlaceTopCard(Card playedCard)
         {
+
             int index = 0;
             for (int y = 2; y < 15; y++)
             {
@@ -59,6 +60,7 @@ namespace BattleOfCardsAcesHigh
                     index++;
                 }
             }
+            
         }
 
         public void PlaceLeftCard(Card playedCard)
@@ -106,23 +108,34 @@ namespace BattleOfCardsAcesHigh
         {
             foreach (Player player in allPlayers)
             {
+
+
                 foreach (Card card in playedCards)
                 {
                     if (card.GetPlayedBy() == player && allPlayers[0] == player)
                     {
                         PlaceTopCard(card);
+                        PlaceTopDeck(player);
+
+
                     }
                     else if (card.GetPlayedBy() == player && allPlayers[1] == player)
                     {
                         PlaceBottomCard(card);
+                        PlaceBottomDeck(player);
+
                     }
                     else if (card.GetPlayedBy() == player && allPlayers[2] == player)
                     {
                         PlaceLeftCard(card);
+                        PlaceLeftDeck(player);
+
                     }
                     else if (card.GetPlayedBy() == player && allPlayers[3] == player)
                     {
                         PlaceRightCard(card);
+                        PlaceRightDeck(player);
+
                     }
                 }
             }
@@ -135,18 +148,23 @@ namespace BattleOfCardsAcesHigh
             if (playerIndex == 0)
             {
                 PlaceTopCard(card);
+                PlaceTopDeck(player);
+
             }
             else if (playerIndex == 1)
             {
                 PlaceBottomCard(card);
+                PlaceBottomDeck(player);
             }
             else if (playerIndex == 2)
             {
                 PlaceLeftCard(card);
+                PlaceLeftDeck(player);
             }
             else if (playerIndex == 3)
             {
                 PlaceRightCard(card);
+                PlaceRightDeck(player);
             }
 
         }
@@ -171,6 +189,105 @@ namespace BattleOfCardsAcesHigh
             }
         }
 
+
+        public string ChooseSymbol(Player player, List<Player> allPlayers)
+        {
+            int playerIndex = allPlayers.IndexOf(player);
+            string symbol = "";
+
+            if (playerIndex == 0)
+            {
+                symbol += player.GetSymbol()[0];
+            }
+            else if (playerIndex == 1)
+            {
+                symbol += player.GetSymbol()[1];
+            }
+            else if (playerIndex == 2)
+            {
+                symbol += player.GetSymbol()[2];
+            }
+            else if (playerIndex == 3)
+            {
+                symbol += player.GetSymbol()[3];
+            }
+
+            return symbol;
+        }
+
+        public void PlaceTopDeck(Player player)
+        {
+
+            int index = 0;
+            for (int y = 2; y < 15; y++)
+            {
+                for (int x = 2; x < 24; x++)
+                {
+                    char characterString = player.ToString()[index];
+                    _printTable[y][x] = characterString.ToString();
+                    index++;
+                }
+            }
+
+        }
+
+        public void PlaceLeftDeck(Player player)
+        {
+            int index = 0;
+            for (int y = 32; y < 45; y++)
+            {
+                for (int x = 2; x < 24; x++)
+                {
+                    char characterString = player.ToString()[index];
+                    _printTable[y][x] = characterString.ToString();
+                    index++;
+                }
+            }
+        }
+
+        public void PlaceBottomDeck(Player player)
+        {
+            int index = 0;
+            for (int y = 32; y < 45; y++)
+            {
+                for (int x = 72; x < 94; x++)
+                {
+                    char characterString = player.ToString()[index];
+                    _printTable[y][x] = characterString.ToString();
+                    index++;
+                }
+            }
+        }
+
+        public void PlaceRightDeck(Player player)
+        {
+            int index = 0;
+            for (int y = 2; y < 15; y++)
+            {
+                for (int x = 72; x < 94; x++)
+                {
+                    char characterString = player.ToString()[index];
+                    _printTable[y][x] = characterString.ToString();
+                    index++;
+                }
+            }
+        }
+
+        public void PlaceCommentField(CommentField commentfield)
+        {
+            int index = 0;
+
+            for (int y = 17; y < 30; y++)
+            {
+                for (int x = 28; x < 68; x++)
+                {
+                    char characterString = commentfield.ToString()[index];
+                    _printTable[y][x] = characterString.ToString();
+                    index++;
+                }
+
+            }
+        }
 
     }
 

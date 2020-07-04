@@ -6,9 +6,11 @@ using System.Text;
 
 namespace BattleOfCardsAcesHigh
 {
+ 
     class Game
     {
         private Table _table;
+        private List<string> _comments;
       
 
         public Game(int numberOfPlayers)
@@ -81,6 +83,16 @@ namespace BattleOfCardsAcesHigh
             }
         }
 
+        public void SetComments()
+        {
+            _comments = new List<string> 
+            { $"{GetCurrentPlayer().GetName()} please choose the attribute to fight:\ni - intelligence;\ns - speed;\np - power",
+            $"\nThis is the next card of {GetCurrentPlayer().GetName()}:",
+            "It is a draw!",
+            $"{_table.GetTurnWinner().GetName()} won {_table.GetWinnerCards().Count} cards!",
+            $"{GetCurrentPlayer().GetName()} WON!"
+            };
+        }
         public void Play()
         {
             var allPlayers = _table.GetAllPlayers();
@@ -89,12 +101,15 @@ namespace BattleOfCardsAcesHigh
 
                 Console.WriteLine($"\nThis is the next card of {GetCurrentPlayer().GetName()}:");
                 _table.GetPrintTable().ResetTablePrint();
+                CommentField commentField = new CommentField();
+                _table.GetPrintTable().PlaceCommentField(commentField);
                 _table.GetPrintTable().PeekCard(GetCurrentPlayer().PeekCard(), GetCurrentPlayer(), allPlayers);
                 Console.WriteLine(_table);
                 string statToCompare = GetStatToCompare();
                 _table.PlayCards(statToCompare);
                 var playedCards =_table.GetPlayedCards();
                 _table.GetPrintTable().ResetTablePrint();
+                _table.GetPrintTable().PlaceCommentField(commentField);
                 _table.GetPrintTable().PlaceCards(playedCards, allPlayers);
                 Console.WriteLine(_table);
                 _table.ResetWinnerCards();
@@ -107,6 +122,7 @@ namespace BattleOfCardsAcesHigh
                     _table.PlayCards(_table.GetAllTurnWinners(), statToCompare);
                     playedCards = _table.GetPlayedCards();
                     _table.GetPrintTable().ResetTablePrint();
+                    _table.GetPrintTable().PlaceCommentField(commentField);
                     _table.GetPrintTable().PlaceCards(playedCards, allPlayers);
                     Console.WriteLine(_table);
                     _table.SetWinnerCards(playedCards);
@@ -123,5 +139,15 @@ namespace BattleOfCardsAcesHigh
 
             Console.WriteLine($"{GetCurrentPlayer().GetName()} WON!");
         }
+
+        public override string ToString()
+        {
+            string commentField = "";
+            string fieldTop = "===========================================";
+            string fieldrow = "|                                         |";
+
+            return commentField += fieldTop + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + commentField;
+        }
     }
+
 }

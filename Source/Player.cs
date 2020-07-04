@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text;
 
 namespace BattleOfCardsAcesHigh
@@ -11,6 +12,7 @@ namespace BattleOfCardsAcesHigh
         private string playerName;
         private PlayerHand playerHand;
         private bool _isLoser;
+        private List<string> _playerLocationSymbol = new List<string> { "----->", "<------", "∧______", "‾‾‾‾‾‾∨" };
 
         public Player(string name)
         {
@@ -29,6 +31,8 @@ namespace BattleOfCardsAcesHigh
             return _playedCard;
         }
 
+        
+
         public Card PeekCard()
         {
             return playerHand.DrawTopCard();
@@ -37,9 +41,24 @@ namespace BattleOfCardsAcesHigh
         {
             playerHand.AddCards(cardsForPlayer);
         }
+        public string GetPlayerName()
+        {
+            return playerName;
+        }
+
+        public PlayerHand GetPlayerHand()
+        {
+            return playerHand;
+        }
+
         public string GetName()
         {
             return playerName;
+        }
+
+        public List<string> GetSymbol()
+        {
+            return _playerLocationSymbol;
         }
         public void CheckIfLoser()
         {
@@ -77,6 +96,21 @@ namespace BattleOfCardsAcesHigh
         public override int GetHashCode()
         {
             return HashCode.Combine(playerName, playerHand);
+        }
+
+        public override string ToString()
+        {
+
+            string cardFaceDown = "";
+            string cardTopBottom = "+--------------------+";
+            string cardRow = "|                    |";
+            //string cardSymbol = "| " + _playerLocationSymbol.PadRight(_playerLocationSymbol.Length) + " |";
+            //string name = "| Hand of:          |";
+            //string cardsLeft = "| Cards left:         |";
+            //string playerName = "| " + this.playerName.PadRight(22 - this.playerName.Length) + " |";
+            //string cardsCount = "|▒▒" + this.playerHand.ToString().PadRight(20 - playerHand.ToString().Length) + " |";
+
+            return cardFaceDown += cardTopBottom + cardRow + cardRow + cardRow + cardRow + cardRow + cardRow + cardRow + cardRow + cardRow + cardRow + cardRow + cardTopBottom;
         }
     }
 }

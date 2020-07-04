@@ -15,6 +15,7 @@ namespace BattleOfCardsAcesHigh.Source
         private int _speed;
         private int _intelligence;
         private string _description;
+        private string _cardSymbol;
 
         public MainDeck CreateMainDeck(int numberOfPlayers)
         {
@@ -31,7 +32,7 @@ namespace BattleOfCardsAcesHigh.Source
                 _speed = Int32.Parse(splittedLine[3]);
                 _intelligence = Int32.Parse(splittedLine[4]);
 
-                cardList.Add(new Card(_power, _speed, _intelligence, _name, _description));
+                cardList.Add(new Card(_power, _speed, _intelligence, _name, _description, _cardSymbol));
             }
 
 
