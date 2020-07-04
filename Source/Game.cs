@@ -9,6 +9,7 @@ namespace BattleOfCardsAcesHigh
     class Game
     {
         private Table _table;
+      
 
         public Game(int numberOfPlayers)
         {
@@ -82,34 +83,39 @@ namespace BattleOfCardsAcesHigh
 
         public void Play()
         {
+            var allPlayers = _table.GetAllPlayers();
             while (!GameEnd())
             {
-                PrintTable printTable = new PrintTable();
-                Console.WriteLine(printTable); 
-                Console.WriteLine($"\nThis is the next card of {GetCurrentPlayer().GetName()}:\n{GetCurrentPlayer().PeekCard()}");
+
+                Console.WriteLine($"\nThis is the next card of {GetCurrentPlayer().GetName()}:");
+                _table.GetPrintTable().ResetTablePrint();
+                _table.GetPrintTable().PeekCard(GetCurrentPlayer().PeekCard(), GetCurrentPlayer(), allPlayers);
+                Console.WriteLine(_table);
                 string statToCompare = GetStatToCompare();
                 _table.PlayCards(statToCompare);
                 var playedCards =_table.GetPlayedCards();
+                _table.GetPrintTable().ResetTablePrint();
+                _table.GetPrintTable().PlaceCards(playedCards, allPlayers);
+                Console.WriteLine(_table);
                 _table.ResetWinnerCards();
                 _table.SetWinnerCards(playedCards);
                 _table.SortPlayedCards(playedCards);
-                foreach (Card card in _table.GetPlayedCards())
-                {
-                    Console.WriteLine(card);
-                }
+        
                 while (!_table.IsONeTurnWinner())
                 {
+                    Console.WriteLine("It is a draw!");
                     _table.PlayCards(_table.GetAllTurnWinners(), statToCompare);
                     playedCards = _table.GetPlayedCards();
+                    _table.GetPrintTable().ResetTablePrint();
+                    _table.GetPrintTable().PlaceCards(playedCards, allPlayers);
+                    Console.WriteLine(_table);
                     _table.SetWinnerCards(playedCards);
                     _table.SortPlayedCards(playedCards);
-                    foreach (Card card in _table.GetPlayedCards())
-                    {
-                        Console.WriteLine(card);
-                    }
+                    
                     Console.ReadKey();
                 }
                 _table.PassCardsToWinner(_table.GetTurnWinner());
+                Console.WriteLine($"{_table.GetTurnWinner().GetName()} won {_table.GetWinnerCards().Count} cards!");
                 _table.RemoveLosers();
                 _table.SetNextPlayer();
 

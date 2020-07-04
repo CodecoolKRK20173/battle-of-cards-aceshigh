@@ -15,6 +15,7 @@ namespace BattleOfCardsAcesHigh.Source
         private int _currentPLayerIndex;
         private Player _currentPlayer;
         private Dealer _januszDealer;
+        private PrintTable _printTable = new PrintTable();
 
 
         public Table(List<Player> allPlayers)
@@ -49,6 +50,11 @@ namespace BattleOfCardsAcesHigh.Source
         public Player GetTurnWinner()
         {
             return _playedCards[0].GetPlayedBy();
+        }
+
+        public PrintTable GetPrintTable()
+        {
+            return _printTable;
         }
 
         public List<Player> GetAllTurnWinners()
@@ -111,6 +117,11 @@ namespace BattleOfCardsAcesHigh.Source
             this._winnersCards.AddRange(winnerCards);
         }
 
+        public List<Card> GetWinnerCards()
+        {
+            return _winnersCards;
+        }
+
         public void ResetWinnerCards()
         {
             this._winnersCards = new List<Card>();
@@ -147,32 +158,33 @@ namespace BattleOfCardsAcesHigh.Source
             return _playedCards;
         }
 
-        public void PlaceCards()
-        {
-            int cardLength = 19;
-            foreach (Card card in _playedCards)
-            {
-                if (_allPlayers.Count == 4)
-                {
 
-
-                }
-
-                else if (_allPlayers.Count == 3)
-                {
-
-                }
-
-                else if (_allPlayers.Count == 2)
-                {
-
-                }
-            }
-        }
 
         public override string ToString()
         {
-            return base.ToString();
+           
+            int width = _printTable.GetTableWidth();
+            int height = _printTable.GetTableHeight();
+            List<List<string>> board = _printTable.GetPrintTable();
+
+            {
+                string printTable = "+================================================================================================+\n";
+
+                for (int y = 0; y < width; y++)
+                {
+                    string printrow = "";
+
+                    for (int x = 0; x < height; x++)
+                    {
+                        printrow += board[y][x];
+                    }
+
+                    printTable += "|" + printrow + "|" + "\n";
+                }
+
+                return printTable + "+================================================================================================+\n";
+            }
+
         }
     }
 }

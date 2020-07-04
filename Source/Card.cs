@@ -116,23 +116,23 @@ namespace BattleOfCardsAcesHigh
         {
             string printCard = "";
             int cardWidth = 19;
-            string cardTopBottom = "+--------------------+\n";
-            string cardRow = "|                    |\n";
-            string cardSymbol = "|          *         |\n";
-            string cardName = "| " + _cardName.PadRight(cardWidth-1) + " |" + "\n";
-            string cardSpeed = "| Speed: " + _speed.ToString().PadRight(cardWidth - (_speed.ToString().Length + 7)) + " |" + "\n";
-            string cardInt = "| Intelligence: " + _intelligence.ToString().PadRight(cardWidth - (_intelligence.ToString().Length + 14)) + " |" + "\n";
+            string cardTopBottom = "+--------------------+";
+            string cardRow = "|                    |";
+            string cardSymbol = "|          *         |";
+            string cardName = "| " + _cardName.PadRight(cardWidth-1) + " |";
+            string cardSpeed = "| Speed: " + _speed.ToString().PadRight(cardWidth - (_speed.ToString().Length + 7)) + " |";
+            string cardInt = "| Intelligence: " + _intelligence.ToString().PadRight(cardWidth - (_intelligence.ToString().Length + 14)) + " |";
  
             
             string cardPower = "";
             if (_power.ToString().Length == 2)
             {
-                cardPower += "| Power: " + _power.ToString().PadRight(cardWidth - (_power.ToString().Length + 6)) + " |" + "\n";
+                cardPower += "| Power: " + _power.ToString().PadRight(cardWidth - (_power.ToString().Length + 6)) + " |";
             }
 
             else if (_power.ToString().Length == 1)
             {
-                cardPower += "| Power: " + _power.ToString().PadRight(cardWidth - (_power.ToString().Length + 7)) + " |" + "\n";
+                cardPower += "| Power: " + _power.ToString().PadRight(cardWidth - (_power.ToString().Length + 7)) + " |";
             }
 
             string cardDescription = "";
@@ -155,16 +155,15 @@ namespace BattleOfCardsAcesHigh
                         line2 += splitDescription[i] + " ";
                     }
                 }
-                cardDescription += "| " + line1.PadRight(cardWidth - 1) + " |" + "\n" + "| " + line2.PadRight(cardWidth - 1) + " |" + "\n";
+                cardDescription += "| " + line1.PadRight(cardWidth - 1) + " |" + "| " + line2.PadRight(cardWidth - 1) + " |";
                 printCard += cardTopBottom + cardRow + cardName + cardRow + cardDescription + cardSymbol + cardRow + cardPower + cardSpeed + cardInt + cardRow + cardTopBottom;
             }
             
             else if (_description.Length < cardWidth)
             {
-                cardDescription += "| " + _description.PadRight(cardWidth - 1) + " |" + "\n";
+                cardDescription += "| " + _description.PadRight(cardWidth - 1) + " |";
                 printCard += cardTopBottom + cardRow + cardName + cardRow + cardDescription + cardRow + cardSymbol + cardRow + cardPower + cardSpeed + cardInt + cardRow + cardTopBottom;
             }
-
 
             return printCard;
 
