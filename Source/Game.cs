@@ -143,10 +143,10 @@ namespace BattleOfCardsAcesHigh
         public override string ToString()
         {
             string commentField = "";
-            string fieldTop = "===========================================";
-            string fieldrow = "|                                         |";
+            string fieldTop = "========================================";
+            string fieldrow = "|                                      |";
 
-            return commentField += fieldTop + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + commentField;
+            return commentField += fieldTop + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldTop;
         }
     }
 
