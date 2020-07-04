@@ -15,8 +15,9 @@ namespace BattleOfCardsAcesHigh
         private string _description;
         private Player _playedBy;
         private string _chosenStat;
+        private string _cardSymbol;
 
-        public Card(int power, int speed, int intelligence, string cardName, string description)
+        public Card(int power, int speed, int intelligence, string cardName, string description, string symbol)
         {
             this._power = power;
             this._speed = speed;
@@ -25,6 +26,7 @@ namespace BattleOfCardsAcesHigh
             this._playedBy = null;
             this._cardName = cardName;
             this._chosenStat = null;
+            this._cardSymbol = symbol;
    
         }
 

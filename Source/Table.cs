@@ -6,7 +6,6 @@ using System.Text;
 
 namespace BattleOfCardsAcesHigh.Source
 {
- 
     public class Table
     {
         private List<Card> _playedCards;
