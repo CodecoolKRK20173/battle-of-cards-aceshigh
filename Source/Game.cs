@@ -6,12 +6,12 @@ using System.Text;
 
 namespace BattleOfCardsAcesHigh
 {
- 
+
     class Game
     {
         private Table _table;
-        private List<string> _comments;
-      
+        private CommentField _commentField = new CommentField();
+
 
         public Game(int numberOfPlayers)
         {
@@ -48,7 +48,6 @@ namespace BattleOfCardsAcesHigh
 
             while (statToCompare != "i" && statToCompare != "s" && statToCompare != "p" && statToCompare != "intelligence" && statToCompare != "speed" && statToCompare != "power")
             {
-                Console.WriteLine($"{GetCurrentPlayer().GetName()} please choose the attribute to fight:\ni - intelligence;\ns - speed;\np - power");
                 statToCompare = Console.ReadLine().ToLower();
             }
 
@@ -83,71 +82,116 @@ namespace BattleOfCardsAcesHigh
             }
         }
 
-        public void SetComments()
+        public void AddCommentsToChooseAttribute()
         {
-            _comments = new List<string> 
-            { $"{GetCurrentPlayer().GetName()} please choose the attribute to fight:\ni - intelligence;\ns - speed;\np - power",
-            $"\nThis is the next card of {GetCurrentPlayer().GetName()}:",
-            "It is a draw!",
-            $"{_table.GetTurnWinner().GetName()} won {_table.GetWinnerCards().Count} cards!",
-            $"{GetCurrentPlayer().GetName()} WON!"
+            var allComments = new List<string>
+            {
+            $"This is the next card of:",
+            $"{GetCurrentPlayer().GetName()}",
+            "Please choose the attribute",
+            "to fight with:",
+            "p - power",
+            "s - speed",
+            "i - intelligence",
+            
             };
+
+            _commentField.SetComment(allComments[0]);
+            _commentField.SetComment(allComments[1]);
+            _commentField.SetComment(allComments[2]);
+            _commentField.SetComment(allComments[3]);
+            _commentField.SetComment(allComments[4]);
+            _commentField.SetComment(allComments[5]);
+            _commentField.SetComment(allComments[6]);
         }
+
+        public void AddCommentDraw(string statToCompare)
+        {
+            _commentField.SetComment("It was a DRAW!");
+            _commentField.SetComment("Play-off!");
+            _commentField.SetComment("You are still fighting with:");
+            _commentField.SetComment(statToCompare);
+        }
+
+        public void AddCommentTurnWinner()
+        {
+            _commentField.SetComment($"{_table.GetTurnWinner().GetName()} won {_table.GetWinnerCards().Count} cards!");
+        }
+
+        public void AddCommentFinalWinner()
+        {
+            _commentField.SetComment($"{GetCurrentPlayer().GetName()} WON!");
+        }
+
+        public void AddCommentPlayTurn()
+        {
+            _commentField.SetComment($"Playing cards...");
+        }
+
+
         public void Play()
         {
-            var allPlayers = _table.GetAllPlayers();
+            var allPlayers = new List<Player>();
+            allPlayers.AddRange(_table.GetAllPlayers());
             while (!GameEnd())
             {
-
-                Console.WriteLine($"\nThis is the next card of {GetCurrentPlayer().GetName()}:");
+                _commentField.ResetComments();
+                AddCommentsToChooseAttribute();
                 _table.GetPrintTable().ResetTablePrint(allPlayers);
-                CommentField commentField = new CommentField();
-                _table.GetPrintTable().PlaceCommentField(commentField);
+                _table.GetPrintTable().PlaceCommentField(_commentField);
                 _table.GetPrintTable().PeekCard(GetCurrentPlayer().PeekCard(), GetCurrentPlayer(), allPlayers);
+                Console.Clear();
                 Console.WriteLine(_table);
                 string statToCompare = GetStatToCompare();
                 _table.PlayCards(statToCompare);
-                var playedCards =_table.GetPlayedCards();
+                var playedCards = _table.GetPlayedCards();
                 _table.GetPrintTable().ResetTablePrint(allPlayers);
-                _table.GetPrintTable().PlaceCommentField(commentField);
+                _commentField.ResetComments();
+                AddCommentPlayTurn();
+                _table.GetPrintTable().PlaceCommentField(_commentField);
                 _table.GetPrintTable().PlaceCards(playedCards, allPlayers);
+                Console.Clear();
                 Console.WriteLine(_table);
                 _table.ResetWinnerCards();
                 _table.SetWinnerCards(playedCards);
                 _table.SortPlayedCards(playedCards);
-        
+
+                Console.ReadKey();
+
                 while (!_table.IsONeTurnWinner())
                 {
-                    Console.WriteLine("It is a draw!");
+                    _commentField.ResetComments();
+                    AddCommentDraw(statToCompare);
                     _table.PlayCards(_table.GetAllTurnWinners(), statToCompare);
                     playedCards = _table.GetPlayedCards();
                     _table.GetPrintTable().ResetTablePrint(allPlayers);
-                    _table.GetPrintTable().PlaceCommentField(commentField);
+                    _table.GetPrintTable().PlaceCommentField(_commentField);
                     _table.GetPrintTable().PlaceCards(playedCards, allPlayers);
+                    Console.Clear();
                     Console.WriteLine(_table);
                     _table.SetWinnerCards(playedCards);
                     _table.SortPlayedCards(playedCards);
-                    
+
                     Console.ReadKey();
                 }
                 _table.PassCardsToWinner(_table.GetTurnWinner());
-                Console.WriteLine($"{_table.GetTurnWinner().GetName()} won {_table.GetWinnerCards().Count} cards!");
+                _commentField.ResetComments();
+                AddCommentTurnWinner();
+                _table.GetPrintTable().ResetTablePrint(allPlayers);
+                _table.GetPrintTable().PlaceCommentField(_commentField);
+                Console.Clear();
+                Console.WriteLine(_table);
                 _table.RemoveLosers();
                 _table.SetNextPlayer();
 
+                Console.ReadKey();
             }
-
-            Console.WriteLine($"{GetCurrentPlayer().GetName()} WON!");
-        }
-
-        public override string ToString()
-        {
-            string commentField = "";
-            string fieldTop = "========================================";
-            string fieldrow = "|                                      |";
-
-            return commentField += fieldTop + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldTop;
+            _commentField.ResetComments();
+            AddCommentFinalWinner();
+            _table.GetPrintTable().ResetTablePrint(allPlayers);
+            _table.GetPrintTable().PlaceCommentField(_commentField);
+            Console.Clear();
+            Console.WriteLine(_table);
         }
     }
-
 }

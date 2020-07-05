@@ -8,15 +8,42 @@ namespace BattleOfCardsAcesHigh.Source
     {
         private int _CommentWidth = 40;
         private int _CommentHeight = 13;
+        private List<string> _comments;
 
+        public CommentField()
+        {
+            this._comments = new List<string>();
+        }
 
+        public void SetComment(string comment)
+        {
+            _comments.Add(comment);
+        }
+
+        public void ResetComments()
+        {
+            _comments = new List<string>();
+        }
         public override string ToString()
         {
             string commentField = "";
-            string fieldTop = "========================================";
-            string fieldrow = "|                                      |";
+            commentField += "========================================";
+            commentField += "|                                      |";
+            for (int i = 0; i < 10; i++)
+            {
+                if (_comments.Count <= i)
+                {
+                    commentField += "|                                      |";
+                }
+                else
+                {
+                    commentField += "| " + _comments[i].PadRight(36) + " |";
+                }
+            }
 
-            return commentField += fieldTop + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldrow + fieldTop;
+            commentField += "========================================";
+
+            return commentField;
         }
 
     }
