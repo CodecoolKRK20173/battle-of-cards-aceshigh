@@ -16,6 +16,32 @@ namespace BattleOfCardsAcesHigh
         public Game(int numberOfPlayers)
         {
             List<Player> gamePlayers = new List<Player>();
+            GameTitle();
+
+            Console.WriteLine("Please provide the number of players(2-4)");
+            string number = Console.ReadLine();
+            while (number != "4" && number != "3" && number !="2")
+                    {
+                if (number == "4")
+                {
+                    numberOfPlayers = 4;
+                }
+
+                else if (number == "3")
+                {
+                    numberOfPlayers = 3;
+                }
+                else if (number == "2")
+                {
+                    numberOfPlayers = 2;
+                }
+
+                else
+                {
+                    Console.WriteLine("Please provide number from 2 to 4");
+                    number = Console.ReadLine();
+                }
+            }
 
             for (int ctr = 0; ctr < numberOfPlayers; ctr++)
             {
@@ -28,6 +54,13 @@ namespace BattleOfCardsAcesHigh
 
             _table = new Table(gamePlayers);
 
+        }
+
+        public void GameTitle()
+        {
+            View.PrintTitle();
+            Console.ReadKey();
+            Console.Clear();
         }
         public bool GameEnd()
         {
@@ -131,13 +164,12 @@ namespace BattleOfCardsAcesHigh
 
         public void Play()
         {
+
             var allPlayers = new List<Player>();
             allPlayers.AddRange(_table.GetAllPlayers());
             while (!GameEnd())
             {
-                View.PrintTitle();
-                Console.ReadKey();
-                Console.Clear();
+
                 _commentField.ResetComments();
                 AddCommentsToChooseAttribute();
                 _table.GetPrintTable().ResetTablePrint(allPlayers);
