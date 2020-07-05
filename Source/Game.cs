@@ -135,6 +135,9 @@ namespace BattleOfCardsAcesHigh
             allPlayers.AddRange(_table.GetAllPlayers());
             while (!GameEnd())
             {
+                View.PrintTitle();
+                Console.ReadKey();
+                Console.Clear();
                 _commentField.ResetComments();
                 AddCommentsToChooseAttribute();
                 _table.GetPrintTable().ResetTablePrint(allPlayers);

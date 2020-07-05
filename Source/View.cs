@@ -6,17 +6,23 @@ namespace BattleOfCardsAcesHigh
 {
     public class View
     {
+        
+
         public static void PrintTitle()
         {
-            using (StreamReader stream = File.OpenText(@"\Files\title.txt"))
-            {
-                String gameTitle = "";
 
-                while ((gameTitle = stream.ReadLine()) != null)
-                {
-                    Console.WriteLine(gameTitle);
-                }
+            string fileName = "title.txt";
+            IEnumerable<string> fileContent;
+
+            var filesFolderName = Directory.GetParent(System.Reflection.Assembly.GetEntryAssembly().Location).Parent.Parent.Parent + "/Source/Files/";
+            fileContent = File.ReadLines(filesFolderName + fileName);
+            string gameTitle = "";
+
+            foreach (string line in fileContent)
+            {
+                Console.WriteLine(gameTitle + line);
             }
+            
         }
 
     }
