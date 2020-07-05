@@ -12,7 +12,7 @@ namespace BattleOfCardsAcesHigh
         private string playerName;
         private PlayerHand playerHand;
         private bool _isLoser;
-        private List<string> _playerLocationSymbol = new List<string> { "----->", "<------", "∧______", "‾‾‾‾‾‾∨" };
+        private string _playerLocationSymbol;
 
         public Player(string name)
         {
@@ -27,7 +27,6 @@ namespace BattleOfCardsAcesHigh
             var _playedCard = playerHand.DrawTopCard();
             _playedCard.SetPlayedBy(this);
             playerHand.RemovePlayedCard();
-            Console.WriteLine($"{playerName} has {playerHand.Count()} cards left.");
             return _playedCard;
         }
 
@@ -56,7 +55,7 @@ namespace BattleOfCardsAcesHigh
             return playerName;
         }
 
-        public List<string> GetSymbol()
+        public string GetSymbol()
         {
             return _playerLocationSymbol;
         }
@@ -98,19 +97,26 @@ namespace BattleOfCardsAcesHigh
             return HashCode.Combine(playerName, playerHand);
         }
 
+        public void SetPlayerSymbol(int index)
+        {
+            var allSymbols = new List<string> { "----->", "<------", "/\\_____", "*****\\/" };
+            this._playerLocationSymbol = allSymbols[index];
+
+        }
+
         public override string ToString()
         {
 
             string cardFaceDown = "";
             string cardTopBottom = "+--------------------+";
             string cardRow = "|                    |";
-            //string cardSymbol = "| " + _playerLocationSymbol.PadRight(_playerLocationSymbol.Length) + " |";
-            //string name = "| Hand of:          |";
-            //string cardsLeft = "| Cards left:         |";
-            //string playerName = "| " + this.playerName.PadRight(22 - this.playerName.Length) + " |";
-            //string cardsCount = "|▒▒" + this.playerHand.ToString().PadRight(20 - playerHand.ToString().Length) + " |";
+            string cardSymbol = "| " + this._playerLocationSymbol.PadRight(18) + " |";
+            string name = "| Hand of:           |";
+            string cardsLeft = "| Cards left:        |";
+            string playerName = "| " + this.playerName.PadRight(18) + " |";
+            string cardsCount = "| " + this.playerHand.Count().ToString().PadRight(18) + " |";
 
-            return cardFaceDown += cardTopBottom + cardRow + cardRow + cardRow + cardRow + cardRow + cardRow + cardRow + cardRow + cardRow + cardRow + cardRow + cardTopBottom;
+            return cardFaceDown += cardTopBottom + cardRow + cardRow + cardSymbol + cardRow + cardRow + name + playerName + cardRow + cardsLeft + cardsCount + cardRow + cardTopBottom;
         }
     }
 }

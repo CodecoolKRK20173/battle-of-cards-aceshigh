@@ -100,7 +100,7 @@ namespace BattleOfCardsAcesHigh
             {
 
                 Console.WriteLine($"\nThis is the next card of {GetCurrentPlayer().GetName()}:");
-                _table.GetPrintTable().ResetTablePrint();
+                _table.GetPrintTable().ResetTablePrint(allPlayers);
                 CommentField commentField = new CommentField();
                 _table.GetPrintTable().PlaceCommentField(commentField);
                 _table.GetPrintTable().PeekCard(GetCurrentPlayer().PeekCard(), GetCurrentPlayer(), allPlayers);
@@ -108,7 +108,7 @@ namespace BattleOfCardsAcesHigh
                 string statToCompare = GetStatToCompare();
                 _table.PlayCards(statToCompare);
                 var playedCards =_table.GetPlayedCards();
-                _table.GetPrintTable().ResetTablePrint();
+                _table.GetPrintTable().ResetTablePrint(allPlayers);
                 _table.GetPrintTable().PlaceCommentField(commentField);
                 _table.GetPrintTable().PlaceCards(playedCards, allPlayers);
                 Console.WriteLine(_table);
@@ -121,7 +121,7 @@ namespace BattleOfCardsAcesHigh
                     Console.WriteLine("It is a draw!");
                     _table.PlayCards(_table.GetAllTurnWinners(), statToCompare);
                     playedCards = _table.GetPlayedCards();
-                    _table.GetPrintTable().ResetTablePrint();
+                    _table.GetPrintTable().ResetTablePrint(allPlayers);
                     _table.GetPrintTable().PlaceCommentField(commentField);
                     _table.GetPrintTable().PlaceCards(playedCards, allPlayers);
                     Console.WriteLine(_table);

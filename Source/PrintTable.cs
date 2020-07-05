@@ -115,26 +115,21 @@ namespace BattleOfCardsAcesHigh
                     if (card.GetPlayedBy() == player && allPlayers[0] == player)
                     {
                         PlaceTopCard(card);
-                        PlaceTopDeck(player);
-
-
+ 
                     }
                     else if (card.GetPlayedBy() == player && allPlayers[1] == player)
                     {
                         PlaceBottomCard(card);
-                        PlaceBottomDeck(player);
 
                     }
                     else if (card.GetPlayedBy() == player && allPlayers[2] == player)
                     {
                         PlaceLeftCard(card);
-                        PlaceLeftDeck(player);
 
                     }
                     else if (card.GetPlayedBy() == player && allPlayers[3] == player)
                     {
                         PlaceRightCard(card);
-                        PlaceRightDeck(player);
 
                     }
                 }
@@ -148,28 +143,49 @@ namespace BattleOfCardsAcesHigh
             if (playerIndex == 0)
             {
                 PlaceTopCard(card);
-                PlaceTopDeck(player);
-
             }
             else if (playerIndex == 1)
             {
                 PlaceBottomCard(card);
-                PlaceBottomDeck(player);
             }
             else if (playerIndex == 2)
             {
                 PlaceLeftCard(card);
-                PlaceLeftDeck(player);
             }
             else if (playerIndex == 3)
             {
                 PlaceRightCard(card);
-                PlaceRightDeck(player);
             }
 
         }
 
-        public void ResetTablePrint()
+        public void PlaceDecks(List<Player> allPlayers)
+        {
+            foreach (Player player in allPlayers)
+            {
+                if (player == allPlayers[0])
+                {
+                    PlaceTopDeck(player);
+
+                }
+                else if (player == allPlayers[1])
+                {
+                    PlaceBottomDeck(player);
+                }
+                else if (player == allPlayers[2])
+                {
+                    PlaceLeftDeck(player);
+                }
+                else if (player == allPlayers[3])
+                {
+                    PlaceRightDeck(player);
+                }
+            }
+           
+
+        }
+
+        public void ResetTablePrint(List<Player> allPlayers)
         {
             this._printTable = new List<List<string>>();
             List<string> tableRow = new List<string>();
@@ -187,6 +203,8 @@ namespace BattleOfCardsAcesHigh
                 _printTable.Add(tableRow);
 
             }
+
+            PlaceDecks(allPlayers);
         }
 
 

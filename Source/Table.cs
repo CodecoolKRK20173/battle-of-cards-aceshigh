@@ -20,6 +20,7 @@ namespace BattleOfCardsAcesHigh.Source
         public Table(List<Player> allPlayers)
         {
             this._allPlayers = allPlayers;
+            SetPlayersSymbols();
             this._januszDealer = new Dealer(_allPlayers.Count);
             _januszDealer.DealCards(_allPlayers);
             _currentPlayer = _allPlayers[_currentPLayerIndex];
@@ -155,6 +156,14 @@ namespace BattleOfCardsAcesHigh.Source
         public List<Card> GetPlayedCards()
         {
             return _playedCards;
+        }
+
+        public void SetPlayersSymbols()
+        {
+            foreach (Player player in _allPlayers)
+            {
+                player.SetPlayerSymbol(_allPlayers.IndexOf(player));
+            }
         }
 
 
