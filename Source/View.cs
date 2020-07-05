@@ -10,7 +10,7 @@ namespace BattleOfCardsAcesHigh
 
         public static void PrintTitle()
         {
-
+            Console.ForegroundColor = ConsoleColor.Green;
             string fileName = "title.txt";
             IEnumerable<string> fileContent;
 
@@ -22,7 +22,7 @@ namespace BattleOfCardsAcesHigh
             {
                 Console.WriteLine(gameTitle + line);
             }
-            
+            Console.ResetColor();
         }
 
     }

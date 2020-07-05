@@ -17,23 +17,29 @@ namespace BattleOfCardsAcesHigh
         {
             List<Player> gamePlayers = new List<Player>();
             GameTitle();
-
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Please provide the number of players(2-4)");
             string number = Console.ReadLine();
-            while (number != "4" && number != "3" && number !="2")
-                    {
+            bool getNumber = true;
+
+            while (getNumber)
+            {
                 if (number == "4")
                 {
                     numberOfPlayers = 4;
+                    getNumber = false;
+
                 }
 
                 else if (number == "3")
                 {
                     numberOfPlayers = 3;
+                    getNumber = false;
                 }
                 else if (number == "2")
                 {
                     numberOfPlayers = 2;
+                    getNumber = false;
                 }
 
                 else
@@ -49,7 +55,7 @@ namespace BattleOfCardsAcesHigh
                 string userName = Console.ReadLine();
                 gamePlayers.Add(new HumanPlayer(userName));
             }
-
+            Console.ResetColor();
             ShufflePlayers(gamePlayers);
 
             _table = new Table(gamePlayers);
