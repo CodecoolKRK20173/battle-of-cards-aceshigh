@@ -64,7 +64,10 @@ namespace BattleOfCardsAcesHigh
 
         public void GameTitle()
         {
-            View.PrintTitle();
+            View.PrintTitle("title.txt");
+            Console.ReadKey();
+            Console.Clear();
+            View.PrintTitle("instructions.txt");
             Console.ReadKey();
             Console.Clear();
         }
@@ -182,9 +185,12 @@ namespace BattleOfCardsAcesHigh
                 _table.GetPrintTable().PlaceCommentField(_commentField);
                 _table.GetPrintTable().PeekCard(GetCurrentPlayer().PeekCard(), GetCurrentPlayer(), allPlayers);
                 Console.Clear();
+                
                 Console.WriteLine(_table);
+
                 string statToCompare = GetStatToCompare();
                 _table.PlayCards(statToCompare);
+
                 var playedCards = _table.GetPlayedCards();
                 _table.GetPrintTable().ResetTablePrint(allPlayers);
                 _commentField.ResetComments();

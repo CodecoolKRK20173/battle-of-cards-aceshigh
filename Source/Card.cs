@@ -116,7 +116,7 @@ namespace BattleOfCardsAcesHigh
 
         public override string ToString()
         {
-
+            
             string printCard = "";
             int cardWidth = 19;
             string cardTopBottom = "+--------------------+";
@@ -167,7 +167,7 @@ namespace BattleOfCardsAcesHigh
                 cardDescription += "| " + _description.PadRight(cardWidth - 1) + " |";
                 printCard += cardTopBottom + cardRow + cardName + cardRow + cardDescription + cardRow + cardSymbol + cardRow + cardPower + cardSpeed + cardInt + cardRow + cardTopBottom;
             }
-           
+
             return printCard;
             
         }

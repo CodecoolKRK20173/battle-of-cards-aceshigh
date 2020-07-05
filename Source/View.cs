@@ -8,10 +8,9 @@ namespace BattleOfCardsAcesHigh
     {
         
 
-        public static void PrintTitle()
+        public static void PrintTitle(string fileName)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            string fileName = "title.txt";
             IEnumerable<string> fileContent;
 
             var filesFolderName = Directory.GetParent(System.Reflection.Assembly.GetEntryAssembly().Location).Parent.Parent.Parent + "/Source/Files/";
@@ -24,6 +23,8 @@ namespace BattleOfCardsAcesHigh
             }
             Console.ResetColor();
         }
+
+
 
     }
 }

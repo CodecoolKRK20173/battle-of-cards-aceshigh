@@ -13,4 +13,9 @@
     <None Remove="BattleOfCardsAcesHigh.Tests\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="ColorConsole" Version="1.0.1" />
+    <PackageReference Include="Pastel" Version="1.3.2" />
+  </ItemGroup>
+
 </Project>
