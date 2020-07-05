@@ -1,6 +1,6 @@
 ﻿Welcome, investigators.
 
-You will take part in the clash of the ancients horrors.
+You will take part in the clash of the ancient horrors.
 
 Each Elder One has three statistic: Power, Speed, Intelligence.
 
