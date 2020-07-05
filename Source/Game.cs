@@ -51,7 +51,7 @@ namespace BattleOfCardsAcesHigh
 
             for (int ctr = 0; ctr < numberOfPlayers; ctr++)
             {
-                Console.WriteLine("Please provide your name adventurer: ");
+                Console.WriteLine("Please provide your name investigator: ");
                 string userName = Console.ReadLine();
                 gamePlayers.Add(new HumanPlayer(userName));
             }
