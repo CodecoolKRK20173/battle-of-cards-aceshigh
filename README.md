@@ -14,3 +14,9 @@ C#
 
 # Players table:
 ![image](https://user-images.githubusercontent.com/60843449/107295429-a493dd00-6a6f-11eb-9976-84cb34fa4149.png)
+
+# Draw:
+![image](https://user-images.githubusercontent.com/60843449/107295642-12d89f80-6a70-11eb-94f5-18edcefb0cf8.png)
+
+# End of turn
+![image](https://user-images.githubusercontent.com/60843449/107295694-30a60480-6a70-11eb-92fc-efef76593515.png)
